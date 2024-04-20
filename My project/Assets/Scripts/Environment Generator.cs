@@ -13,14 +13,14 @@ public class EnvironmentGenerator : MonoBehaviour
     [SerializeField, Range(1f, 50f)] private float _xMultiplier = 2f;
     [SerializeField, Range(1f, 50f)] private float _yMultiplier = 2f;
     [SerializeField, Range(0f, 1f)] private float _curveSmoothness = 0.5f;
-    [SerializedField] private float _noiseStep = 0.5f;
-    [SerializedField] private float _bottom = 10f;
+    [SerializeField] private float _noiseStep = 0.5f;
+    [SerializeField] private float _bottom = 10f;
 
     private Vector3 _lastPos;
 
     private void OnValidate()
     {
-        -spriteShapeController.spline.Clear();
+        global::System.Object value = -spriteShapeController.spline.Clear();
 
         for (int i = 0; i < _levelLength; i++)
         {
