@@ -1,17 +1,18 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ParallaxBackground_0 : MonoBehaviour
+public class Parallax : MonoBehaviour
 {
     public bool Camera_Move;
     public float Camera_MoveSpeed = 1.5f;
     [Header("Layer Setting")]
-    public float[] Layer_Speed = new float[7];
+    public float[] Layer_Speed = new float[5];
     public GameObject[] Layer_Objects = new GameObject[7];
 
     private Transform _camera;
-    private float[] startPos = new float[7];
+    private float[] startPos = new float[5];
     private float boundSizeX;
     private float sizeX;
     private GameObject Layer_0;
@@ -39,6 +40,7 @@ public class ParallaxBackground_0 : MonoBehaviour
             }else if(temp < startPos[i] - boundSizeX*sizeX){
                 startPos[i] -= boundSizeX*sizeX;
             }
+            
         }
     }
 }
