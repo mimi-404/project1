@@ -11,7 +11,7 @@ public class fuelcontroller : MonoBehaviour
     [SerializeField, Range(0.1f, 5f)] private float _fuelDrainSpeed = 1f;
     [SerializeField] private float _maxfuelAmount = 100f;
     [SerializeField] private Gradient _fuelGradient; // Add this line
-
+    [SerializeField] private Rigidbody2D carRigidbody2D; // Assign this in the inspector
     private float _currentFuelAmount;
 
     private void Awake()
@@ -36,8 +36,15 @@ public class fuelcontroller : MonoBehaviour
     }
     private void Update()
     {
-        _currentFuelAmount -= Time.deltaTime * _fuelDrainSpeed;
-        UpdateUI();
+        // _currentFuelAmount -= Time.deltaTime * _fuelDrainSpeed;
+        // UpdateUI();
+        
+            if (carRigidbody2D.velocity != Vector2.zero) // The car is moving
+            {
+                _currentFuelAmount -= Time.deltaTime * _fuelDrainSpeed;
+                UpdateUI();
+            }
+
     }
     private void UpdateUI()
     {

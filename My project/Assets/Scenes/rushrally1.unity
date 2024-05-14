@@ -2779,6 +2779,7 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
+  carRigidbody2D: {fileID: 1177760780}
 --- !u!1 &918429316
 GameObject:
   m_ObjectHideFlags: 0
