@@ -2169,8 +2169,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.01538986}
-  m_Size: {x: 0.64, y: 0.917017}
+  m_Offset: {x: 0, y: 0.03486526}
+  m_Size: {x: 0.64, y: 0.78300333}
   m_Direction: 0
 --- !u!1 &635958794
 GameObject:
@@ -2835,9 +2835,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.10003388, y: 0}
+  m_Offset: {x: 0.100033864, y: 0.048948858}
   serializedVersion: 2
-  m_Radius: 0.8413898
+  m_Radius: 0.7973727
 --- !u!233 &1123465810
 HingeJoint2D:
   m_ObjectHideFlags: 0
