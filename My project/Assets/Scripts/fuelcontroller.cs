@@ -22,11 +22,26 @@ public class fuelcontroller : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        // _currentFuelAmount = _maxfuelAmount;
+        // UpdateUI();
+        
+            Debug.Log("_fuelImage: " + _fuelImage);
+            Debug.Log("_fuelGradient: " + _fuelGradient);
+
+            _currentFuelAmount = _maxfuelAmount;
+            UpdateUI();
+        
+    }
     private void Update()
     {
-        // Update the fuel amount and color here
-        _currentFuelAmount -= _fuelDrainSpeed * Time.deltaTime;
-        _fuelImage.fillAmount = _currentFuelAmount / _maxfuelAmount;
-        _fuelImage.color = _fuelGradient.Evaluate(_currentFuelAmount / _maxfuelAmount);
+        _currentFuelAmount -= Time.deltaTime * _fuelDrainSpeed;
+        UpdateUI();
+    }
+    private void UpdateUI()
+    {
+        _fuelImage.fillAmount = (_currentFuelAmount / _maxfuelAmount);
+        _fuelImage.color = _fuelGradient.Evaluate(_fuelImage.fillAmount);
     }
 }
