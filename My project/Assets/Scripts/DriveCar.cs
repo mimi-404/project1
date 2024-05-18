@@ -11,6 +11,10 @@ public class DriveCar : MonoBehaviour
     [SerializeField] private float _rotationspeed = 300f;
 
     private float _moveInput;
+     public float GetSpeed()
+    {
+        return _speed;
+    }
     private void Update()
     {
         _moveInput = Input.GetAxisRaw("Horizontal");

@@ -1,21 +1,4 @@
-// // using System.Collections;
-// // using System.Collections.Generic;
-// // using UnityEngine;
 
-// // public class NewBehaviourScript : MonoBehaviour
-// // {
-// //     // Start is called before the first frame update
-// //     void Start()
-// //     {
-        
-// //     }
-
-// //     // Update is called once per frame
-// //     void Update()
-// //     {
-        
-// //     }
-// // }
 // using UnityEngine;
 
 // public class CameraFollow : MonoBehaviour
@@ -37,11 +20,18 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public Transform target;
-    public float smoothSpeed = 0.125f;
-    public Vector3 offset;
+    public DriveCar vehicle;
+ 
+    public Vector3 offset = new Vector3(10f, 0f, 0f);
 
     private void LateUpdate()
-    {
+    {   
+        if (target == null)
+        {
+            Debug.LogError("Target is not set");
+            return;
+        }
+        float smoothSpeed = vehicle.GetSpeed() * 1.2f;
         Vector3 desiredPosition = target.position + offset;
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
         transform.position = smoothedPosition;
