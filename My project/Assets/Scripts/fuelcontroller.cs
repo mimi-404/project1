@@ -45,6 +45,11 @@ public class fuelcontroller : MonoBehaviour
                 UpdateUI();
             }
 
+            if (_currentFuelAmount <= 0f)
+        {
+            gamemanager.instance.GameOver();
+        }
+
     }
     private void UpdateUI()
     {
