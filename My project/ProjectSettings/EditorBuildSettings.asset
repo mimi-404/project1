@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/main.unity
     guid: d18560c9d40b928468122372208cfd80
+  - enabled: 1
+    path: Assets/Scenes/rushrally1.unity
+    guid: bcfc20c8d7f8fcc49855be50a65fb494
   m_configObjects: {}
