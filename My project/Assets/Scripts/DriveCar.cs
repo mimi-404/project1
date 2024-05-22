@@ -24,6 +24,7 @@ public class DriveCar : MonoBehaviour
         _frontTireRB.AddTorque(-_moveInput * _speed * Time.fixedDeltaTime);
         _backTireRB.AddTorque(-_moveInput * _speed * Time.fixedDeltaTime);
         _carRb.AddTorque(_moveInput * _rotationspeed * Time.fixedDeltaTime);
+     
     }
 
 }

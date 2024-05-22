@@ -13,6 +13,8 @@ public class fuelcontroller : MonoBehaviour
     [SerializeField] private Gradient _fuelGradient; // Add this line
     [SerializeField] private Rigidbody2D carRigidbody2D; // Assign this in the inspector
     private float _currentFuelAmount;
+    private DriveCar ok;
+    private float vehicleSpeed;
 
     private void Awake()
     {
@@ -29,26 +31,42 @@ public class fuelcontroller : MonoBehaviour
         
             Debug.Log("_fuelImage: " + _fuelImage);
             Debug.Log("_fuelGradient: " + _fuelGradient);
-
+            ok = GetComponent<DriveCar>(); // Assuming DriveCar is attached to the same GameObject
+            vehicleSpeed = ok.GetSpeed();
             _currentFuelAmount = _maxfuelAmount;
             UpdateUI();
         
     }
     private void Update()
-    {
-        // _currentFuelAmount -= Time.deltaTime * _fuelDrainSpeed;
-        // UpdateUI();
-        
+    {   
             if (carRigidbody2D.velocity != Vector2.zero) // The car is moving
-            {
-                _currentFuelAmount -= Time.deltaTime * _fuelDrainSpeed;
-                UpdateUI();
-            }
+        {
+            _currentFuelAmount -= Time.deltaTime * _fuelDrainSpeed * vehicleSpeed;
+            UpdateUI();
+        }
+        else
+        {
+            _currentFuelAmount -= Time.deltaTime * _fuelDrainSpeed;
+            UpdateUI();
+        }
 
-            if (_currentFuelAmount <= 0f)
+        if (_currentFuelAmount <= 0f)
         {
             gamemanager.instance.GameOver();
-        }
+         }
+        // _currentFuelAmount -= Time.deltaTime * _fuelDrainSpeed * vehicleSpeed;
+        // UpdateUI();
+        
+        //     if (carRigidbody2D.velocity != Vector2.zero) // The car is moving
+        //     {
+        //         _currentFuelAmount -= Time.deltaTime * _fuelDrainSpeed;
+        //         UpdateUI();
+        //     }
+
+        //     if (_currentFuelAmount <= 0f)
+        // {
+        //     gamemanager.instance.GameOver();
+        // }
 
     }
     private void UpdateUI()
