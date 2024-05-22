@@ -13,8 +13,10 @@ public class DriveCar : MonoBehaviour
     private float _moveInput;
      public float GetSpeed()
     {
-        return _speed;
+        //return _speed;
+        return _carRb.velocity.magnitude;
     }
+    
     private void Update()
     {
         _moveInput = Input.GetAxisRaw("Horizontal");

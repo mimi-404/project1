@@ -1,4 +1,4 @@
-using System.Collections;
+// using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,11 +10,10 @@ public class fuelcontroller : MonoBehaviour
     [SerializeField] private Image _fuelImage;
     [SerializeField, Range(0.1f, 5f)] private float _fuelDrainSpeed = 1f;
     [SerializeField] private float _maxfuelAmount = 100f;
-    [SerializeField] private Gradient _fuelGradient; // Add this line
-    [SerializeField] private Rigidbody2D carRigidbody2D; // Assign this in the inspector
+    [SerializeField] private Gradient _fuelGradient;
+    [SerializeField] private Rigidbody2D carRigidbody2D;
     private float _currentFuelAmount;
     private DriveCar ok;
-    private float vehicleSpeed;
 
     private void Awake()
     {
@@ -26,58 +25,51 @@ public class fuelcontroller : MonoBehaviour
 
     private void Start()
     {
-        // _currentFuelAmount = _maxfuelAmount;
-        // UpdateUI();
-        
-            Debug.Log("_fuelImage: " + _fuelImage);
-            Debug.Log("_fuelGradient: " + _fuelGradient);
-            ok = GetComponent<DriveCar>(); // Assuming DriveCar is attached to the same GameObject
-            vehicleSpeed = ok.GetSpeed();
-            _currentFuelAmount = _maxfuelAmount;
-            UpdateUI();
-        
+        Debug.Log("_fuelImage: " + _fuelImage);
+        Debug.Log("_fuelGradient: " + _fuelGradient);
+        ok = GetComponent<DriveCar>();
+        _currentFuelAmount = _maxfuelAmount;
+        UpdateUI();
     }
+
     private void Update()
     {   
-            if (carRigidbody2D.velocity != Vector2.zero) // The car is moving
+        float vehicleSpeed = ok.GetSpeed();
+
+        if (carRigidbody2D.velocity != Vector2.zero) // The car is moving
         {
             _currentFuelAmount -= Time.deltaTime * _fuelDrainSpeed * vehicleSpeed;
-            UpdateUI();
         }
         else
         {
             _currentFuelAmount -= Time.deltaTime * _fuelDrainSpeed;
-            UpdateUI();
         }
 
         if (_currentFuelAmount <= 0f)
         {
             gamemanager.instance.GameOver();
-         }
-        // _currentFuelAmount -= Time.deltaTime * _fuelDrainSpeed * vehicleSpeed;
-        // UpdateUI();
-        
-        //     if (carRigidbody2D.velocity != Vector2.zero) // The car is moving
-        //     {
-        //         _currentFuelAmount -= Time.deltaTime * _fuelDrainSpeed;
-        //         UpdateUI();
-        //     }
+        }
 
-        //     if (_currentFuelAmount <= 0f)
-        // {
-        //     gamemanager.instance.GameOver();
-        // }
-
+        UpdateUI();
     }
+
     private void UpdateUI()
     {
-        _fuelImage.fillAmount = (_currentFuelAmount / _maxfuelAmount);
-        _fuelImage.color = _fuelGradient.Evaluate(_fuelImage.fillAmount);
+        float fillAmount = (_currentFuelAmount / _maxfuelAmount);
+
+        if (_fuelImage.fillAmount != fillAmount)
+        {
+            _fuelImage.fillAmount = fillAmount;
+            _fuelImage.color = _fuelGradient.Evaluate(fillAmount);
+        }
     }
 
     public void FillFuel()
     {
-        _currentFuelAmount = _maxfuelAmount;
-        UpdateUI();
+        if (_currentFuelAmount < _maxfuelAmount)
+        {
+            _currentFuelAmount = _maxfuelAmount;
+            UpdateUI();
+        }
     }
 }

@@ -2991,7 +2991,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 741644199}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 55838.164}
+  m_LocalPosition: {x: 0, y: 0, z: -1703.0039}
   m_LocalScale: {x: 129.6, y: 129.6, z: 129.6}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3396,6 +3396,7 @@ GameObject:
   - component: {fileID: 897646788}
   - component: {fileID: 897646789}
   - component: {fileID: 897646790}
+  - component: {fileID: 897646791}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3504,6 +3505,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinText: {fileID: 2037961710}
+--- !u!114 &897646791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897646785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4caa9c5fb4be40dfa77f1f187edcb12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _frontTireRB: {fileID: 1352604008}
+  _backTireRB: {fileID: 450056840}
+  _carRb: {fileID: 1177760780}
+  _speed: 150
+  _rotationspeed: 300
 --- !u!1 &918429316
 GameObject:
   m_ObjectHideFlags: 0
@@ -4604,7 +4622,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 9.85
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -4629,7 +4647,7 @@ Transform:
   m_GameObject: {fileID: 1449942452}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: -84.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5152,7 +5170,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1828077002}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 55838.164}
+  m_LocalPosition: {x: 0, y: 0, z: -1703}
   m_LocalScale: {x: 129.6, y: 129.6, z: 129.6}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6106,3 +6124,6 @@ SceneRoots:
   - {fileID: 994716724}
   - {fileID: 4226445295464411804}
   - {fileID: 180098252}
+  - {fileID: 393878720}
+  - {fileID: 1959205319}
+  - {fileID: 2029806742}
