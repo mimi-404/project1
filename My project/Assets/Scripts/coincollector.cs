@@ -34,6 +34,6 @@ public class coincollector : MonoBehaviour
 
     private void UpdateCoinText()
     {
-        coinText.text = "   " + coinCount;
+        coinText.text = "Coins: " + coinCount;
     }
 }
