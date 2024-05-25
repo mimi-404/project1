@@ -17,13 +17,26 @@ public class EnvironmentGenerator : MonoBehaviour
 
     private Vector3 _lastPos;
 
+    private void Start()
+    {
+        GenerateTerrain();
+    }
+
     private void OnValidate()
     {
-        _spriteShapeController.spline.Clear(); // Corrected here
+        GenerateTerrain();
+    }
+
+    private void GenerateTerrain()
+    {
+        _spriteShapeController.spline.Clear();
+
+      
+        float seed = Random.Range(0f, 100f);
 
         for (int i = 0; i < _levelLength; i++)
         {
-            _lastPos = transform.position + new Vector3(i * _xMultiplier, Mathf.PerlinNoise(0, i * _noiseStep) * _yMultiplier);
+            _lastPos = new Vector3(i * _xMultiplier, Mathf.PerlinNoise(seed, i * _noiseStep) * _yMultiplier);
             _spriteShapeController.spline.InsertPointAt(i, _lastPos);
 
             if (i != 0 && i != _levelLength - 1)
@@ -34,8 +47,11 @@ public class EnvironmentGenerator : MonoBehaviour
             }
         }
 
-        _spriteShapeController.spline.InsertPointAt(_levelLength, new Vector3(_lastPos.x, transform.position.y - _bottom));
+      
+        _spriteShapeController.spline.InsertPointAt(_levelLength, new Vector3(_lastPos.x, -_bottom));
+        _spriteShapeController.spline.InsertPointAt(_levelLength + 1, new Vector3(0, -_bottom));
 
-        _spriteShapeController.spline.InsertPointAt(_levelLength + 1, new Vector3(transform.position.x, transform.position.y - _bottom));
+      
+        _spriteShapeController.RefreshSpriteShape();
     }
 }
