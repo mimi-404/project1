@@ -45,21 +45,10 @@ public class fuelcontroller : MonoBehaviour
                 UpdateUI();
             }
 
-            if (_currentFuelAmount <= 0f)
-        {
-            gamemanager.instance.GameOver();
-        }
-
     }
     private void UpdateUI()
     {
         _fuelImage.fillAmount = (_currentFuelAmount / _maxfuelAmount);
         _fuelImage.color = _fuelGradient.Evaluate(_fuelImage.fillAmount);
-    }
-
-    public void FillFuel()
-    {
-        _currentFuelAmount = _maxfuelAmount;
-        UpdateUI();
     }
 }
