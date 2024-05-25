@@ -26,9 +26,24 @@ public class coincollector : MonoBehaviour
         UpdateCoinText();
     }
 
-    public void AddCoin()
+    public void AddCoin_5()
     {
-        coinCount++;
+        coinCount+=5;
+        UpdateCoinText();
+    }
+    public void AddCoin_25()
+    {
+        coinCount += 25;
+        UpdateCoinText();
+    }
+    public void AddCoin_500()
+    {
+        coinCount += 500;
+        UpdateCoinText();
+    }
+    public void AddCoin_100()
+    {
+        coinCount += 100;
         UpdateCoinText();
     }
 
