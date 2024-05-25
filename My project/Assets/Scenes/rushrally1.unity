@@ -3436,7 +3436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fuelImage: {fileID: 741644201}
-  _fuelDrainSpeed: 2.89
+  _fuelDrainSpeed: 1.89
   _maxfuelAmount: 100
   _fuelGradient:
     serializedVersion: 2
@@ -3469,6 +3469,7 @@ MonoBehaviour:
     m_NumColorKeys: 4
     m_NumAlphaKeys: 2
   carRigidbody2D: {fileID: 1177760780}
+  _startDelay: 1.5
 --- !u!114 &897646788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4671,6 +4672,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1177760781}
+  offset: {x: 0, y: 0, z: 0}
+  smoothSpeed: 0.125
 --- !u!1 &1515519602
 GameObject:
   m_ObjectHideFlags: 0
