@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnvironmentSpawner : MonoBehaviour
+public class coinandfuelgenerator : MonoBehaviour
 {
     public GameObject coinPrefab;    // Reference to the coin prefab
     public GameObject fuelPrefab;    // Reference to the fuel prefab
