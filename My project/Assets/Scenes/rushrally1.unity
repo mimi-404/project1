@@ -5193,8 +5193,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae4e0ea69d96ac489d7d6e71d11ee4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinPrefab: {fileID: 0}
-  fuelPrefab: {fileID: 0}
+  coinPrefab: {fileID: 2037961708}
+  fuelPrefab: {fileID: 1871753401}
   numberOfCoins: 10
   numberOfFuel: 5
   coinSpawnAreaMin: {x: -8.89, y: -10}
