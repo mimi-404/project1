@@ -25,8 +25,8 @@ public class fuelcontroller : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("_fuelImage: " + _fuelImage);
-        Debug.Log("_fuelGradient: " + _fuelGradient);
+        //Debug.Log("_fuelImage: " + _fuelImage);
+        //Debug.Log("_fuelGradient: " + _fuelGradient);
         ok = GetComponent<DriveCar>();
         _currentFuelAmount = _maxfuelAmount;
         UpdateUI();

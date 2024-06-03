@@ -25,7 +25,7 @@
 // }
 using UnityEngine;
 
-public class ParallaxEffect : MonoBehaviour
+public class Parallax : MonoBehaviour
 {
     private float startPos;
     private float length;

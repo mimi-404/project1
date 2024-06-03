@@ -21,7 +21,7 @@ public class coinandfuelgenerator : MonoBehaviour
     }
     void SpawnItems(GameObject prefab, int count, Vector2 areaMin, Vector2 areaMax)
     {
-        Debug.Log($"Spawning {count} items of {prefab.name}.");
+        // Debug.Log($"Spawning {count} items of {prefab.name}.");
 
         // Define the range of y-axis movement for coins
         float minY = areaMin.y;
@@ -41,7 +41,7 @@ public class coinandfuelgenerator : MonoBehaviour
 
             Vector3 spawnPosition = new Vector3(randomX, randomY, 0); // Ensure z-axis remains at 0 for 2D
             Instantiate(prefab, spawnPosition, Quaternion.identity);
-            Debug.Log($"Spawned {prefab.name} at {spawnPosition}");
+            //Debug.Log($"Spawned {prefab.name} at {spawnPosition}");
         }
     }
 
