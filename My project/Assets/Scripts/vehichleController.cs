@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class vehicleController : MonoBehaviour
 {
@@ -20,14 +21,14 @@ public class vehicleController : MonoBehaviour
         backMotor = new JointMotor2D();
 
         // Find buttons in the scene
-        Button accelerateButton = GameObject.Find("GAS").GetComponent<Button>();
-        Button brakeButton = GameObject.Find("BRAKE").GetComponent<Button>();
+        GameObject accelerateButton = GameObject.Find("GAS");
+        GameObject brakeButton = GameObject.Find("BRAKE");
 
-        // Add listeners to the buttons
-        accelerateButton.onClick.AddListener(() => Accelerate(true));
-        accelerateButton.onClick.AddListener(() => Brake(false));
-        brakeButton.onClick.AddListener(() => Brake(true));
-        brakeButton.onClick.AddListener(() => Accelerate(false));
+        // Add EventTriggers to the buttons
+        AddEventTrigger(accelerateButton, EventTriggerType.PointerDown, () => Accelerate(true));
+        AddEventTrigger(accelerateButton, EventTriggerType.PointerUp, () => Accelerate(false));
+        AddEventTrigger(brakeButton, EventTriggerType.PointerDown, () => Brake(true));
+        AddEventTrigger(brakeButton, EventTriggerType.PointerUp, () => Brake(false));
     }
 
     void Update()
@@ -69,5 +70,19 @@ public class vehicleController : MonoBehaviour
     public void Brake(bool isPressed)
     {
         brake = isPressed;
+    }
+
+    private void AddEventTrigger(GameObject obj, EventTriggerType type, UnityEngine.Events.UnityAction action)
+    {
+        EventTrigger trigger = obj.GetComponent<EventTrigger>();
+        if (trigger == null)
+        {
+            trigger = obj.AddComponent<EventTrigger>();
+        }
+
+        EventTrigger.Entry entry = new EventTrigger.Entry();
+        entry.eventID = type;
+        entry.callback.AddListener((eventData) => action());
+        trigger.triggers.Add(entry);
     }
 }
