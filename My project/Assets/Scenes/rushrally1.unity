@@ -437,7 +437,6 @@ GameObject:
   - component: {fileID: 367761174}
   - component: {fileID: 367761173}
   - component: {fileID: 367761176}
-  - component: {fileID: 367761177}
   m_Layer: 0
   m_Name: GROUND
   m_TagString: ground
@@ -3876,20 +3875,6 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
---- !u!114 &367761177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 367761171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ce4eeb4c0ca12c44a58095b47267bf1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 1449942452}
-  parallaxEffect: 0
 --- !u!1 &450056837
 GameObject:
   m_ObjectHideFlags: 0
@@ -4138,7 +4123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1449942452}
-  parallaxEffect: 0
+  parallaxEffect: 0.05
 --- !u!1 &498748789
 GameObject:
   m_ObjectHideFlags: 0
@@ -4359,7 +4344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1449942452}
-  parallaxEffect: 0
+  parallaxEffect: 0.5
 --- !u!1 &741644199
 GameObject:
   m_ObjectHideFlags: 0
@@ -6392,7 +6377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1449942452}
-  parallaxEffect: 0
+  parallaxEffect: 0.7
 --- !u!1 &1449942452
 GameObject:
   m_ObjectHideFlags: 0
@@ -7845,7 +7830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1449942452}
-  parallaxEffect: 0
+  parallaxEffect: 0.3
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
