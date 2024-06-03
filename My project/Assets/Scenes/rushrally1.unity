@@ -3883,7 +3883,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 367761171}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ce4eeb4c0ca12c44a58095b47267bf1, type: 3}
   m_Name: 
@@ -4138,7 +4138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1449942452}
-  parallaxEffect: 0.1
+  parallaxEffect: 0
 --- !u!1 &498748789
 GameObject:
   m_ObjectHideFlags: 0
@@ -4359,7 +4359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1449942452}
-  parallaxEffect: 0.3
+  parallaxEffect: 0
 --- !u!1 &741644199
 GameObject:
   m_ObjectHideFlags: 0
@@ -5041,8 +5041,8 @@ GameObject:
   - component: {fileID: 897646788}
   - component: {fileID: 897646789}
   - component: {fileID: 897646790}
-  - component: {fileID: 897646791}
   - component: {fileID: 897646793}
+  - component: {fileID: 897646795}
   - component: {fileID: 897646794}
   m_Layer: 0
   m_Name: GameManager
@@ -5079,7 +5079,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fuelImage: {fileID: 741644201}
-  _fuelDrainSpeed: 0.38
+  _fuelDrainSpeed: 0.39
   _maxfuelAmount: 100
   _fuelGradient:
     serializedVersion: 2
@@ -5112,7 +5112,6 @@ MonoBehaviour:
     m_NumColorKeys: 4
     m_NumAlphaKeys: 2
   carRigidbody2D: {fileID: 1177760780}
-  _startDelay: 1.5
 --- !u!114 &897646788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5153,23 +5152,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinText: {fileID: 2037961710}
---- !u!114 &897646791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 897646785}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4caa9c5fb4be40dfa77f1f187edcb12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _frontTireRB: {fileID: 1352604008}
-  _backTireRB: {fileID: 450056840}
-  _carRb: {fileID: 1177760780}
-  _speed: 150
-  _rotationspeed: 300
 --- !u!114 &897646793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5177,13 +5159,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 897646785}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 896b97a329146be48a7cd5cdbada2674, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frontWheel: {fileID: 0}
-  backWheel: {fileID: 0}
+  frontWheel: {fileID: 1177760783}
+  backWheel: {fileID: 1177760783}
   speed: 1500
   maxMotorTorque: 1000
 --- !u!114 &897646794
@@ -5193,7 +5175,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 897646785}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ae4e0ea69d96ac489d7d6e71d11ee4e, type: 3}
   m_Name: 
@@ -5206,6 +5188,24 @@ MonoBehaviour:
   coinSpawnAreaMax: {x: 8.89, y: 10}
   fuelSpawnAreaMin: {x: -8.89, y: -10}
   fuelSpawnAreaMax: {x: 8.89, y: 10}
+--- !u!114 &897646795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897646785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4caa9c5fb4be40dfa77f1f187edcb12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _frontTireRB: {fileID: 450056840}
+  _backTireRB: {fileID: 1352604008}
+  _carRb: {fileID: 1177760780}
+  _baseSpeed: 150
+  _rotationSpeed: 300
+  _speedIncrement: 10
 --- !u!1 &918429316
 GameObject:
   m_ObjectHideFlags: 0
@@ -5706,9 +5706,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1177760781}
   - component: {fileID: 1177760780}
+  - component: {fileID: 1177760786}
   - component: {fileID: 1177760783}
   - component: {fileID: 1177760782}
-  - component: {fileID: 1177760784}
   - component: {fileID: 1177760785}
   m_Layer: 0
   m_Name: vehicle
@@ -5783,7 +5783,7 @@ WheelJoint2D:
   m_ConnectedAnchor: {x: 0, y: 0}
   m_Suspension:
     m_DampingRatio: 0.4
-    m_Frequency: 3
+    m_Frequency: 4
     m_Angle: 90
   m_UseMotor: 0
   m_Motor:
@@ -5808,29 +5808,12 @@ WheelJoint2D:
   m_ConnectedAnchor: {x: 0.000000069469934, y: -1.0072654e-10}
   m_Suspension:
     m_DampingRatio: 0.4
-    m_Frequency: 3
+    m_Frequency: 4
     m_Angle: 90
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
     m_MaximumMotorForce: 10000
---- !u!114 &1177760784
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1177760779}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4caa9c5fb4be40dfa77f1f187edcb12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _frontTireRB: {fileID: 450056840}
-  _backTireRB: {fileID: 1352604008}
-  _carRb: {fileID: 1177760780}
-  _speed: 150
-  _rotationspeed: 300
 --- !u!114 &1177760785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5847,6 +5830,24 @@ MonoBehaviour:
   backWheel: {fileID: 1177760782}
   speed: 1500
   maxMotorTorque: 1000
+--- !u!114 &1177760786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177760779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4caa9c5fb4be40dfa77f1f187edcb12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _frontTireRB: {fileID: 450056840}
+  _backTireRB: {fileID: 1352604008}
+  _carRb: {fileID: 1177760780}
+  _baseSpeed: 150
+  _rotationSpeed: 300
+  _speedIncrement: 10
 --- !u!1 &1212605697
 GameObject:
   m_ObjectHideFlags: 0
@@ -6391,7 +6392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1449942452}
-  parallaxEffect: 0.5
+  parallaxEffect: 0
 --- !u!1 &1449942452
 GameObject:
   m_ObjectHideFlags: 0
@@ -6500,7 +6501,6 @@ MonoBehaviour:
   target: {fileID: 1177760781}
   offset: {x: 0, y: 0, z: 0}
   smoothSpeed: 0.125
-  verticalSmoothSpeed: 0.05
   minY: -10
   maxY: 10
 --- !u!1 &1515519602
@@ -6675,6 +6675,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1608478209}
+  - component: {fileID: 1608478210}
   m_Layer: 0
   m_Name: background
   m_TagString: Untagged
@@ -6702,6 +6703,56 @@ Transform:
   - {fileID: 367761172}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1971053207 &1608478210
+SpriteShapeRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608478208}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_MaskInteraction: 0
+  m_ShapeTexture: {fileID: 0}
+  m_Sprites: []
+  m_LocalAABB:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 1048576, y: 1048576, z: 1048576}
+  m_SpriteSortPoint: 0
 --- !u!1 &1615069346
 GameObject:
   m_ObjectHideFlags: 0
@@ -7794,7 +7845,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1449942452}
-  parallaxEffect: 0.2
+  parallaxEffect: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
