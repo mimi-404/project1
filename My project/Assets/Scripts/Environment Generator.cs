@@ -15,11 +15,12 @@ public class EnvironmentGenerator : MonoBehaviour
     [SerializeField] private float _bottom = 10f;
 
     [SerializeField] private GameObject _fuelPrefab;
-    [SerializeField] private GameObject _coinPrefab;
+    [SerializeField] private GameObject[] _coinPrefabs; // Array of different coin prefabs
     [SerializeField] private float _coinHeightAboveTerrain = -6f; // Small positive height above the terrain for coins
     [SerializeField] private float _fuelHeightAboveTerrain = -6f;
     [SerializeField] private float _coinDistance = 5f; // Distance between each coin spawn
-    [SerializeField] private float _fuelDistance = 40f; // Distance between each fuel spawn
+    [SerializeField] private float _fuelDistance = 20f; // Decreased fuel spawn distance
+    [SerializeField] private float _coinSpacing = 2f; // Horizontal spacing between coins in a group
 
     private Vector3 _lastPos;
     private List<GameObject> _spawnedObjects = new List<GameObject>();
@@ -64,8 +65,8 @@ public class EnvironmentGenerator : MonoBehaviour
             // Check if the current position is a multiple of the distanceBetweenCoins
             if (i % _coinDistance == 0 || i % (_coinDistance * 2) == 0 || i % (_coinDistance * 3) == 0)
             {
-                Vector3 coinPosition = new Vector3(_lastPos.x, terrainHeight + _coinHeightAboveTerrain);
-                SpawnObject(_coinPrefab, coinPosition);
+                Vector3 coinGroupPosition = new Vector3(_lastPos.x, terrainHeight + _coinHeightAboveTerrain);
+                SpawnCoinGroup(coinGroupPosition);
             }
 
             // Check if the current position is a multiple of the distanceBetweenFuel
@@ -80,6 +81,28 @@ public class EnvironmentGenerator : MonoBehaviour
         _spriteShapeController.spline.InsertPointAt(_levelLength + 1, new Vector3(0, -_bottom));
 
         _spriteShapeController.RefreshSpriteShape();
+    }
+
+    private void SpawnCoinGroup(Vector3 position)
+    {
+        if (_coinPrefabs != null && _coinPrefabs.Length >= 4)
+        {
+            List<int> usedIndices = new List<int>();
+
+            for (int i = 0; i < 4; i++)
+            {
+                int randomIndex;
+                do
+                {
+                    randomIndex = Random.Range(0, _coinPrefabs.Length);
+                } while (usedIndices.Contains(randomIndex));
+
+                usedIndices.Add(randomIndex);
+
+                Vector3 coinPosition = position + new Vector3(i * _coinSpacing, 0, 0); // Adjust x-position for each coin
+                SpawnObject(_coinPrefabs[randomIndex], coinPosition);
+            }
+        }
     }
 
     private void SpawnObject(GameObject prefab, Vector3 position)

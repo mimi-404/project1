@@ -474,17 +474,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spriteShapeController: {fileID: 367761174}
   _levelLength: 399
-  _xMultiplier: 11.6
-  _yMultiplier: 8.9
+  _xMultiplier: 11
+  _yMultiplier: 8
   _curveSmoothness: 0.565
   _noiseStep: 0.5
   _bottom: 10
   _fuelPrefab: {fileID: 8499239908105471946, guid: 7d8e581b31816ae4baaa4701ed4a541c, type: 3}
-  _coinPrefab: {fileID: 6364393442619743008, guid: d3dd30dde04b58b4586c96e731d97ecd, type: 3}
-  _coinHeightAboveTerrain: -6
-  _fuelHeightAboveTerrain: -6
+  _coinPrefabs:
+  - {fileID: 8092169581072907839, guid: 55fbd3583d9be884ebe33e5414477249, type: 3}
+  - {fileID: 3952179155572300936, guid: 07dcaf6a0f913fc4082fc8f5b8638d85, type: 3}
+  - {fileID: 7528294630204837280, guid: d909fec7c9ec21845b4e3c6c50302a57, type: 3}
+  - {fileID: 2506787483670619879, guid: e4abc81f1f850034495e65443e763633, type: 3}
+  _coinHeightAboveTerrain: -7
+  _fuelHeightAboveTerrain: -7
   _coinDistance: 5
-  _fuelDistance: 40
+  _fuelDistance: 11
+  _coinSpacing: 2
 --- !u!114 &367761174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3878,7 +3883,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 367761171}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ce4eeb4c0ca12c44a58095b47267bf1, type: 3}
   m_Name: 
@@ -5074,7 +5079,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fuelImage: {fileID: 741644201}
-  _fuelDrainSpeed: 0.1
+  _fuelDrainSpeed: 0.38
   _maxfuelAmount: 100
   _fuelGradient:
     serializedVersion: 2
@@ -5155,7 +5160,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 897646785}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4caa9c5fb4be40dfa77f1f187edcb12, type: 3}
   m_Name: 
@@ -5188,7 +5193,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 897646785}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ae4e0ea69d96ac489d7d6e71d11ee4e, type: 3}
   m_Name: 
