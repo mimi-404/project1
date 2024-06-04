@@ -8461,7 +8461,7 @@ GameObject:
   - component: {fileID: 2068539595}
   - component: {fileID: 2068539594}
   m_Layer: 5
-  m_Name: fue;/score/coins
+  m_Name: fuel/score/coins
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
