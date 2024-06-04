@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class gamemanager : MonoBehaviour
 {
     public static gamemanager instance;
 
     [SerializeField] private GameObject _gameOverCanvas;
-    
-        private void Awake()
+    [SerializeField] private Canvas mainGameCanvas;
+
+    private void Awake()
     {
         if (instance == null)
         {
@@ -18,14 +20,39 @@ public class gamemanager : MonoBehaviour
 
         Time.timeScale = 1f;
     }
+
     public void GameOver()
     {
         _gameOverCanvas.SetActive(true);
+        DisableCanvasUI(mainGameCanvas);
         Time.timeScale = 0f;
     }
 
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private void DisableCanvasUI(Canvas canvas)
+    {
+        if (canvas != null)
+        {
+          
+            Button[] buttons = canvas.GetComponentsInChildren<Button>();
+            foreach (Button button in buttons)
+            {
+                button.interactable = false;
+            }
+
+            Selectable[] selectables = canvas.GetComponentsInChildren<Selectable>();
+            foreach (Selectable selectable in selectables)
+            {
+                selectable.interactable = false;
+            }
+        }
+        else
+        {
+            Debug.LogError("Main Game Canvas not assigned in gamemanager script.");
+        }
     }
 }
