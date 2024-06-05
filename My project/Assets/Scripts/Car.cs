@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class carselection 
+public class Car 
 {
- public Sprite carselectionSprite;
+ public Sprite  carSprite;
 }
+
