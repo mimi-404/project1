@@ -10,6 +10,7 @@ public class gamemanager : MonoBehaviour
 
     [SerializeField] private GameObject _gameOverCanvas;
     [SerializeField] private Canvas mainGameCanvas;
+    [SerializeField] private GameObject imageCanvas; // Add this line to reference the Image Canvas
 
     private void Awake()
     {
@@ -24,6 +25,14 @@ public class gamemanager : MonoBehaviour
     public void GameOver()
     {
         _gameOverCanvas.SetActive(true);
+        if (imageCanvas != null)
+        {
+            imageCanvas.SetActive(true); // Enable the Image Canvas when the game is over
+        }
+        else
+        {
+            Debug.LogError("Image Canvas not assigned in gamemanager script.");
+        }
         DisableCanvasUI(mainGameCanvas);
         Time.timeScale = 0f;
     }
@@ -37,7 +46,6 @@ public class gamemanager : MonoBehaviour
     {
         if (canvas != null)
         {
-          
             Button[] buttons = canvas.GetComponentsInChildren<Button>();
             foreach (Button button in buttons)
             {
