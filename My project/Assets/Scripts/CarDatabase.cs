@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class carsDatabase : ScriptableObject
+public class CarDatabase : ScriptableObject
 {
     public Car[] car;
 
@@ -19,4 +19,3 @@ public class carsDatabase : ScriptableObject
         return car[index];
     }
 }
-

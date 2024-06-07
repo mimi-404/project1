@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7c17b00067d6e8419d10e24796abce2, type: 3}
+  m_Name: New Car Database
+  m_EditorClassIdentifier: 
+  car:
+  - carSprite: {fileID: 21300000, guid: c7302eccee1864292a4b8f7fbbb42818, type: 3}
+  - carSprite: {fileID: 21300000, guid: 2e703299d62164fa696a0240c6c14692, type: 3}
+  - carSprite: {fileID: 21300000, guid: ffbd5b43c2c05483387ad7e348f28b7d, type: 3}
+  - carSprite: {fileID: 21300000, guid: 8a61f6a8572aa4830ac26367e3745038, type: 3}
