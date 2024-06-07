@@ -1,5 +1,4 @@
-// using System.Collections;
-// using System.Collections.Generic;
+
 // using UnityEngine;
 
 // public class Control : MonoBehaviour
@@ -12,6 +11,12 @@
 
 //     private float orthographicHalfHeight;
 //     private DriveCar driveCar;
+//     private bool isGameOver = false;
+
+//     // Additional fields for zoom effect
+//     public Animation cameraAnimation;
+//     public float zoomDuration = 5f;
+//     private bool isZooming = false;
 
 //     void Start()
 //     {
@@ -32,7 +37,11 @@
 
 //     void LateUpdate()
 //     {
-//         if (target == null || driveCar == null) return;
+//         if (isGameOver)
+//             return;
+
+//         if (target == null || driveCar == null)
+//             return;
 
 //         float carSpeed = driveCar.GetSpeed();
 //         float dynamicSmoothSpeed = Mathf.Lerp(smoothSpeed, smoothSpeed + carSpeed * 0.01f, Time.deltaTime);
@@ -45,11 +54,37 @@
 
 //         transform.position = smoothedPosition;
 //     }
+
+//     public void GameOver()
+//     {
+//         if (isGameOver || isZooming)
+//             return;
+
+//         isGameOver = true;
+
+//         // Play the zoom animation
+//         if (cameraAnimation != null)
+//         {
+//             isZooming = true;
+//             cameraAnimation.Play("ZoomAnimation");
+//             Invoke("ResetZoom", zoomDuration); // Reset the zoom effect after duration
+//         }
+
+//         // You can also add code here to trigger sound effects and particle effects
+//     }
+
+//     void ResetZoom()
+//     {
+//         isZooming = false;
+//     }
 // }
 using UnityEngine;
+using System.Collections;
 
 public class Control : MonoBehaviour
 {
+    private Camera mainCamera;
+
     public Transform target;
     public Vector3 offset;
     public float smoothSpeed = 0.125f;
@@ -61,12 +96,13 @@ public class Control : MonoBehaviour
     private bool isGameOver = false;
 
     // Additional fields for zoom effect
-    public Animation cameraAnimation;
     public float zoomDuration = 1.5f;
+    private Vector3 initialPosition;
     private bool isZooming = false;
 
     void Start()
     {
+        mainCamera = Camera.main; // Get a reference to the main camera
         if (target == null)
         {
             Debug.LogError("Target is not assigned in the inspector!");
@@ -84,7 +120,7 @@ public class Control : MonoBehaviour
 
     void LateUpdate()
     {
-        if (isGameOver)
+        if (isGameOver || isZooming)
             return;
 
         if (target == null || driveCar == null)
@@ -104,24 +140,44 @@ public class Control : MonoBehaviour
 
     public void GameOver()
     {
-        if (isGameOver || isZooming)
+        if (isGameOver)
             return;
 
         isGameOver = true;
 
-        // Play the zoom animation
-        if (cameraAnimation != null)
-        {
-            isZooming = true;
-            cameraAnimation.Play("ZoomAnimation");
-            Invoke("ResetZoom", zoomDuration); // Reset the zoom effect after duration
-        }
-
-        // You can also add code here to trigger sound effects and particle effects
+        // Start the smooth zoom-in effect
+        StartZoomEffect();
     }
 
-    void ResetZoom()
+    IEnumerator ZoomIn()
     {
+        yield return null;
+        float elapsedTime = 0;
+
+        while (elapsedTime < zoomDuration)
+        {
+            transform.position = Vector3.Lerp(initialPosition, target.position, elapsedTime / zoomDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Ensure the camera reaches the target position
+        transform.position = target.position;
+
+        // Enable the image canvases or perform any other post-zoom actions
+        // For example, you can enable the game over canvas here
+        // gameOverCanvas.SetActive(true);
+
+        // Reset zooming flag
         isZooming = false;
+    }
+
+    public void StartZoomEffect()
+    {
+        if (!isGameOver && !isZooming)
+        {
+            isZooming = true;
+            StartCoroutine(ZoomIn());
+        }
     }
 }
