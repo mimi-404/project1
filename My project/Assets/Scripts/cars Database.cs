@@ -2,19 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[createAssestMenu]
-public class NewBehaviourScript : SriptableObject
- {
-    public Car[] car;
+[CreateAssetMenu(fileName = "NewCarCollection", menuName = "Car Collection")]
+public class CarCollection : ScriptableObject
+{
+    public Car[] cars;
 
     public int CarCount
     {
-        get{
-            return car.Length;
+        get
+        {
+            return cars.Length;
         }
     }
-    public Car GetCar(int index){
-        return character[index];
-    }
- }
 
+    public Car GetCar(int index)
+    {
+        if (index >= 0 && index < cars.Length)
+        {
+            return cars[index];
+        }
+        else
+        {
+            Debug.LogError("Index out of range");
+            return null;
+        }
+    }
+}
