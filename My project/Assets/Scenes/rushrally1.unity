@@ -516,6 +516,7 @@ GameObject:
   - component: {fileID: 367761174}
   - component: {fileID: 367761173}
   - component: {fileID: 367761176}
+  - component: {fileID: 367761177}
   m_Layer: 0
   m_Name: GROUND
   m_TagString: GROUND
@@ -3954,6 +3955,20 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &367761177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367761171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bae7cf66106176b41906ff61cf0c8bd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carDB: {fileID: 0}
+  artworkSprite: {fileID: 0}
 --- !u!1 &397116404
 GameObject:
   m_ObjectHideFlags: 0
@@ -5428,6 +5443,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aa8a317bb651480a9aa328cc87b8d8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Camera_Move: 0
+  Camera_MoveSpeed: 1.5
+  Layer_Speed:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  Layer_Objects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &893795222
 GameObject:
   m_ObjectHideFlags: 0
@@ -5438,6 +5471,7 @@ GameObject:
   m_Component:
   - component: {fileID: 893795223}
   - component: {fileID: 893795225}
+  - component: {fileID: 893795226}
   - component: {fileID: 893795224}
   m_Layer: 0
   m_Name: Car
@@ -5645,6 +5679,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &893795226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 893795222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bae7cf66106176b41906ff61cf0c8bd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carDB: {fileID: 11400000, guid: d2dc11bac8aae944aa252f05f67c360f, type: 2}
+  artworkSprite: {fileID: 893795225}
 --- !u!1 &897646785
 GameObject:
   m_ObjectHideFlags: 0
