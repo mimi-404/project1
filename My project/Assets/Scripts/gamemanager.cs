@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // using System.Collections;
 // using System.Collections.Generic;
 // using UnityEngine;
@@ -65,6 +66,8 @@
 //     }
 // }
 
+=======
+>>>>>>> a69b22e9071ecb3ecbd8a637ab1b54dd6923dd9b
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -72,10 +75,10 @@ using UnityEngine.UI;
 public class gamemanager : MonoBehaviour
 {
     public static gamemanager instance;
-    private Control controlScript;
 
     [SerializeField] private GameObject _gameOverCanvas;
     [SerializeField] private Canvas mainGameCanvas;
+<<<<<<< HEAD
     [SerializeField] private GameObject imageCanvas; // Add this line to reference the Image Canvas
 
     private bool isGamePaused = false;
@@ -88,6 +91,9 @@ public class gamemanager : MonoBehaviour
         // Other initialization...
         UpdatePauseButton(); // Initially update button visibility
     }
+=======
+    [SerializeField] private GameObject imageCanvas; // Reference to the Image Canvas
+>>>>>>> a69b22e9071ecb3ecbd8a637ab1b54dd6923dd9b
 
     private void Awake()
     {
@@ -101,12 +107,6 @@ public class gamemanager : MonoBehaviour
 
     public void GameOver()
     {
-        // Trigger the zoom-in effect on the vehicle before enabling the canvases
-        if (controlScript != null)
-        {
-            controlScript.StartZoomEffect();
-        }
-
         _gameOverCanvas.SetActive(true);
         if (imageCanvas != null)
         {
