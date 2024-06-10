@@ -4,19 +4,18 @@ using UnityEngine.EventSystems;
 
 public class ButtonImageChange : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    public Image buttonImage; // Reference to the image component of the button
-    public Sprite normalImage; // The normal image when button is not pressed
-    public Sprite pressedImage; // The image when button is pressed
+    public Image buttonImage; 
+    public Sprite normalImage;
+    public Sprite pressedImage; 
 
-    // Called when mouse is pressed down on the button
+    
     public void OnPointerDown(PointerEventData eventData)
     {
-        buttonImage.sprite = pressedImage; // Change image to pressed image
+        buttonImage.sprite = pressedImage; 
     }
 
-    // Called when mouse is released from the button
     public void OnPointerUp(PointerEventData eventData)
     {
-        buttonImage.sprite = normalImage; // Change image to normal image
+        buttonImage.sprite = normalImage; 
     }
 }

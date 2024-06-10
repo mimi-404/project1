@@ -8,7 +8,20 @@ public class gamemanager : MonoBehaviour
 
     [SerializeField] private GameObject _gameOverCanvas;
     [SerializeField] private Canvas mainGameCanvas;
-    [SerializeField] private GameObject imageCanvas; // Reference to the Image Canvas
+    [SerializeField] private GameObject imageCanvas;
+    private bool isPaused = false;
+
+    public Button pauseButton;
+    public Sprite pauseSprite;
+    public Sprite resumeSprite; 
+
+    private void Start()
+    {
+        if (pauseButton != null && pauseSprite != null)
+        {
+            pauseButton.image.sprite = pauseSprite;
+        }
+    }
 
     private void Awake()
     {
@@ -19,6 +32,8 @@ public class gamemanager : MonoBehaviour
 
         Time.timeScale = 1f;
     }
+
+
 
     public void GameOver()
     {
@@ -59,6 +74,31 @@ public class gamemanager : MonoBehaviour
         else
         {
             Debug.LogError("Main Game Canvas not assigned in gamemanager script.");
+        }
+    }
+
+
+    public void TogglePause()
+    {
+        isPaused = !isPaused;
+
+        if (isPaused)
+        {
+            Time.timeScale = 0f;
+
+            if (pauseButton != null && resumeSprite != null)
+            {
+                pauseButton.image.sprite = resumeSprite; 
+            }
+        }
+        else
+        {
+            Time.timeScale = 1f; 
+
+            if (pauseButton != null && pauseSprite != null)
+            {
+                pauseButton.image.sprite = pauseSprite; 
+            }
         }
     }
 }
