@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class DistanceCovered : MonoBehaviour
+public class DistanceCovered1 : MonoBehaviour
 {
-    public static DistanceCovered instance;
+    public static DistanceCovered1 instance;
 
     [SerializeField] private TextMeshProUGUI _distanceText;
     [SerializeField] private TextMeshProUGUI _highscoreText;

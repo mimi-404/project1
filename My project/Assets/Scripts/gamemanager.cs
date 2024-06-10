@@ -13,7 +13,7 @@ public class gamemanager : MonoBehaviour
 
     public Button pauseButton;
     public Sprite pauseSprite;
-    public Sprite resumeSprite; 
+    public Sprite resumeSprite;
 
     private void Start()
     {
@@ -88,16 +88,16 @@ public class gamemanager : MonoBehaviour
 
             if (pauseButton != null && resumeSprite != null)
             {
-                pauseButton.image.sprite = resumeSprite; 
+                pauseButton.image.sprite = resumeSprite;
             }
         }
         else
         {
-            Time.timeScale = 1f; 
+            Time.timeScale = 1f;
 
             if (pauseButton != null && pauseSprite != null)
             {
-                pauseButton.image.sprite = pauseSprite; 
+                pauseButton.image.sprite = pauseSprite;
             }
         }
     }
