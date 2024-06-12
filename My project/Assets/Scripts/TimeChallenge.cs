@@ -10,6 +10,12 @@ public class TimeChallenge : MonoBehaviour
     private Vector3 startPosition;
     public Color normalColor = Color.white;
     public Color warningColor = Color.red;
+    AudioManager audioManager;
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
+    }
 
     void Start()
     {
@@ -54,10 +60,11 @@ public class TimeChallenge : MonoBehaviour
         timerText.text = "Time left: " + timeText;
 
         // Log the current time and color for debugging
-        Debug.Log($"Current Time: {currentTime}, Timer Color: {timerText.color}");
+        //Debug.Log($"Current Time: {currentTime}, Timer Color: {timerText.color}");
 
         if (currentTime <= 10f)
         {
+            audioManager.PlaySFX(audioManager.time);
             timerText.color = warningColor;
         }
         else
@@ -68,6 +75,8 @@ public class TimeChallenge : MonoBehaviour
 
     void OnTimeUp()
     {
+        audioManager.StopMusic();
+        audioManager.PlaySFX(audioManager.gameOver);
         gamemanager.instance.GameOver();
     }
 }

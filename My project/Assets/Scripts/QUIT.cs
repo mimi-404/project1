@@ -2,15 +2,22 @@ using UnityEngine;
 
 public class QUIT : MonoBehaviour
 {
-    public void QuitGame()
-    {
-        // If we are running in the editor
+
+        AudioManager audioManager;
+        private void Awake()
+        {
+                audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        }
+        public void QuitGame()
+        {
+                // If we are running in the editor
 #if UNITY_EDITOR
        
         UnityEditor.EditorApplication.isPlaying = false;
 #else
-        // Quit the application
-        Application.Quit();
+                audioManager.PlaySFX(audioManager.quit);
+                // Quit the application
+                Application.Quit();
 #endif
-    }
+        }
 }

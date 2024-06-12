@@ -15,7 +15,7 @@ public class gamemanager : MonoBehaviour
     public Button playButton;
     public Sprite pauseSprite;
     public Sprite resumeSprite;
-
+    AudioManager audioManager;
     private void Start()
     {
         // Set the pause button sprite
@@ -40,13 +40,17 @@ public class gamemanager : MonoBehaviour
         }
 
         Time.timeScale = 1f;
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     public void GameOver()
     {
         _gameOverCanvas.SetActive(true);
+
         if (imageCanvas != null)
         {
+            audioManager.PlaySFX(audioManager.gameOver);
+            audioManager.StopMusic();
             imageCanvas.SetActive(true); // Enable the Image Canvas when the game is over
         }
         else
@@ -59,6 +63,7 @@ public class gamemanager : MonoBehaviour
 
     public void RestartGame()
     {
+        audioManager.PlaySFX(audioManager.buttonClick);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -90,7 +95,8 @@ public class gamemanager : MonoBehaviour
         {
             Time.timeScale = 0f;
             isPaused = true;
-
+            audioManager.PlaySFX(audioManager.buttonClick);
+            audioManager.StopMusic();
             Debug.Log("Pausing game: hiding pause button and showing play button");
             // Hide the pause button and show the play button
             pauseButton.gameObject.SetActive(false);
@@ -104,7 +110,8 @@ public class gamemanager : MonoBehaviour
         {
             Time.timeScale = 1f;
             isPaused = false;
-
+            audioManager.PlaySFX(audioManager.buttonClick);
+            audioManager.PlayMusic();
             Debug.Log("Resuming game: hiding play button and showing pause button");
             // Hide the play button and show the pause button
             pauseButton.gameObject.SetActive(true);
