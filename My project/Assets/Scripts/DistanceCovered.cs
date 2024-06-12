@@ -104,7 +104,7 @@ public class DistanceCovered : MonoBehaviour
         // Calculate distance covered by the player
         float distance = Mathf.Max(_playerTrans.position.x - _startPos.x, 0f);
         _distanceCovered = distance;
-        _scoreText.text = _distanceCovered.ToString("F0") + "m";
+        _scoreText.text = "Score:" + _distanceCovered.ToString("F0") + "m";
 
         // Update highscore if necessary
         if (_distanceCovered > _highscore)
@@ -131,7 +131,7 @@ public class DistanceCovered : MonoBehaviour
 
     void UpdateCoinsText()
     {
-        _coinsText.text = "+" + _totalCoinsCollected.ToString() + "Coins";
+        _coinsText.text = "+ " + _totalCoinsCollected.ToString() + "Coins";
     }
 
     public void AddCoins(int coins)
