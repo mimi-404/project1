@@ -14,6 +14,10 @@ public class CSVreader : MonoBehaviour
         public int distance;
         public int best;
     }
+    public class PlayerList
+    {
+        public Player[] player;
+    }
     public PlayerList myPlayerList = new PlayerList();
 
 
@@ -24,7 +28,7 @@ public class CSVreader : MonoBehaviour
     void ReadCSV()
     {
         string[] data = textAssetData.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
-        int tablesize = data.length / 5 - 1;
+        int tablesize = data.Length / 5 - 1;
         myPlayerList.player = new Player[tablesize];
         for (int i = 0; i < tablesize; i++)
         {
