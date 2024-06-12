@@ -28,7 +28,7 @@
 
 //     public void AddCoin_5()
 //     {
-//         coinCount+=5;
+//         coinCount += 5;
 //         UpdateCoinText();
 //     }
 //     public void AddCoin_25()
@@ -53,7 +53,6 @@
 //     }
 // }
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class coincollector : MonoBehaviour
@@ -62,6 +61,8 @@ public class coincollector : MonoBehaviour
 
     public TextMeshProUGUI coinText;
     private int coinCount = 0;
+
+    private DistanceCovered distanceCovered;
 
     private void Awake()
     {
@@ -77,47 +78,47 @@ public class coincollector : MonoBehaviour
 
     private void Start()
     {
-        // Retrieve total coins collected from the CSV file
-        DistanceCovered1 distanceCovered = FindObjectOfType<DistanceCovered1>();
+        distanceCovered = FindObjectOfType<DistanceCovered>();
         if (distanceCovered != null)
         {
             coinCount = distanceCovered.GetTotalCoinsCollected();
         }
-        else
-        {
-            Debug.LogError("DistanceCovered1 script not found in scene!");
-        }
-
         UpdateCoinText();
     }
 
     public void AddCoin_5()
     {
-        coinCount += 5;
-        UpdateCoinText();
+        AddCoins(5);
     }
 
     public void AddCoin_25()
     {
-        coinCount += 25;
-        UpdateCoinText();
+        AddCoins(25);
     }
 
     public void AddCoin_500()
     {
-        coinCount += 500;
-        UpdateCoinText();
+        AddCoins(500);
     }
 
     public void AddCoin_100()
     {
-        coinCount += 100;
+        AddCoins(100);
+    }
+
+    private void AddCoins(int amount)
+    {
+        coinCount += amount;
+        if (distanceCovered != null)
+        {
+            distanceCovered.AddCoins(amount);
+        }
         UpdateCoinText();
     }
 
     private void UpdateCoinText()
     {
-        coinText.text = "   " + coinCount;
+        coinText.text = " " + coinCount.ToString();
     }
 }
 

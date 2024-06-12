@@ -185,34 +185,7 @@ public class CSVReader : MonoBehaviour
         }
     }
 
-    // Method to read data from CSV file
-    // public (float highscore, int totalCoins) GetGameData(string playerName)
-    // {
-    //     float highscore = 0f;
-    //     int totalCoins = 0;
 
-    //     if (lines != null)
-    //     {
-    //         // Find the line corresponding to the player
-    //         foreach (string line in lines)
-    //         {
-    //             string[] data = line.Split(',');
-    //             if (data.Length >= 5 && data[0] == playerName)
-    //             {
-    //                 float.TryParse(data[1], out highscore);
-    //                 int.TryParse(data[2], out totalCoins);
-    //                 break;
-    //             }
-    //         }
-    //     }
-    //     else
-    //     {
-    //         Debug.LogWarning("No data to read. CSV file may not have been loaded.");
-    //     }
-
-    //     return (highscore, totalCoins);
-    // }
-    // Method to read data from CSV file
     public (float highscore, int totalCoins) GetGameData(string playerName)
     {
         float highscore = 0f;
