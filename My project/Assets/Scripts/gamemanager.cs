@@ -12,14 +12,23 @@ public class gamemanager : MonoBehaviour
     private bool isPaused = false;
 
     public Button pauseButton;
+    public Button playButton;
     public Sprite pauseSprite;
     public Sprite resumeSprite;
 
     private void Start()
     {
+        // Set the pause button sprite
         if (pauseButton != null && pauseSprite != null)
         {
             pauseButton.image.sprite = pauseSprite;
+            pauseButton.gameObject.SetActive(true);
+        }
+        // Set the play button sprite and hide it initially
+        if (playButton != null && resumeSprite != null)
+        {
+            playButton.image.sprite = resumeSprite;
+            playButton.gameObject.SetActive(false); // Initially, play button is hidden
         }
     }
 
@@ -32,8 +41,6 @@ public class gamemanager : MonoBehaviour
 
         Time.timeScale = 1f;
     }
-
-
 
     public void GameOver()
     {
@@ -77,28 +84,31 @@ public class gamemanager : MonoBehaviour
         }
     }
 
-
-    public void TogglePause()
+    public void PauseGame()
     {
-        isPaused = !isPaused;
-
-        if (isPaused)
+        if (!isPaused)
         {
             Time.timeScale = 0f;
+            isPaused = true;
 
-            if (pauseButton != null && resumeSprite != null)
-            {
-                pauseButton.image.sprite = resumeSprite;
-            }
+            Debug.Log("Pausing game: hiding pause button and showing play button");
+            // Hide the pause button and show the play button
+            pauseButton.gameObject.SetActive(false);
+            playButton.gameObject.SetActive(true);
         }
-        else
+    }
+
+    public void ResumeGame()
+    {
+        if (isPaused)
         {
             Time.timeScale = 1f;
+            isPaused = false;
 
-            if (pauseButton != null && pauseSprite != null)
-            {
-                pauseButton.image.sprite = pauseSprite;
-            }
+            Debug.Log("Resuming game: hiding play button and showing pause button");
+            // Hide the play button and show the pause button
+            pauseButton.gameObject.SetActive(true);
+            playButton.gameObject.SetActive(false);
         }
     }
 }
