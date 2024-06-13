@@ -13,10 +13,11 @@ public class AudioManager : MonoBehaviour
     public AudioClip carCollide;
     public AudioClip time;
     public AudioClip buttonClick;
-
+    public AudioClip button2;
     public AudioClip highscore;
     public AudioClip fuellow;
     public AudioClip quit;
+    public AudioClip nextprev;
     private void Start()
     {
         musicSource.clip = background;
