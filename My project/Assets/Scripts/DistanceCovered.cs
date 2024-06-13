@@ -92,4 +92,9 @@ public class DistanceCovered : MonoBehaviour
 
         return 0f;
     }
+    public float GetCurrentDistance()
+    {
+        return Mathf.Max(_playerTrans.position.x - _startPos.x, 0f);
+    }
 }
+

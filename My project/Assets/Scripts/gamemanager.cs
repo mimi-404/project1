@@ -9,7 +9,7 @@ public class gamemanager : MonoBehaviour
 
     [SerializeField] private GameObject _gameOverCanvas;
     [SerializeField] private Canvas mainGameCanvas;
-    [SerializeField] private GameObject imageCanvas;
+
     private bool isPaused = false;
 
     public Button pauseButton;
@@ -17,6 +17,7 @@ public class gamemanager : MonoBehaviour
     public Sprite pauseSprite;
     public Sprite resumeSprite;
     AudioManager audioManager;
+
     private void Start()
     {
         // Set the pause button sprite
@@ -44,31 +45,21 @@ public class gamemanager : MonoBehaviour
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
-
     public void GameOver()
     {
         audioManager.StopMusic();
-        DisableCanvasUI(mainGameCanvas);
         StartCoroutine(GameOverCoroutine());
     }
 
     private IEnumerator GameOverCoroutine()
     {
-        yield return new WaitForSeconds(2f); // Wait for 2 seconds
-
-        _gameOverCanvas.SetActive(true);
-
-        if (imageCanvas != null)
-        {
-            audioManager.StopMusic();
-            imageCanvas.SetActive(true); // Enable the Image Canvas when the game is over
-        }
-        else
-        {
-            Debug.LogError("Image Canvas not assigned in gamemanager script.");
-        }
         DisableCanvasUI(mainGameCanvas);
         Time.timeScale = 0f; // Pause the game
+        yield return new WaitForSecondsRealtime(2f); // Wait for 2 seconds in real time
+        Time.timeScale = 0f; // Pause the game
+        _gameOverCanvas.SetActive(true);
+        Time.timeScale = 0f; // Pause the game
+
     }
 
     public void RestartGame()
@@ -82,7 +73,6 @@ public class gamemanager : MonoBehaviour
         yield return new WaitForSeconds(audioManager.button2.length);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-
 
     private void DisableCanvasUI(Canvas canvas)
     {
