@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class DistanceCovered : MonoBehaviour
@@ -9,27 +8,21 @@ public class DistanceCovered : MonoBehaviour
 
     public static DistanceCovered instance;
 
-    [SerializeField] private TextMeshProUGUI _scoreText; // For displaying current distance or score
-    [SerializeField] private TextMeshProUGUI _coinsText; // For displaying coins
-    [SerializeField] private TextMeshProUGUI _highscoreText; // For displaying high score
+    [SerializeField] private TextMeshProUGUI _distanceText;
+    [SerializeField] private TextMeshProUGUI _highscoreText;
     [SerializeField] private Transform _playerTrans;
 
     private Vector3 _startPos;
-    private float _highscore = 0f;
+    private float _classicHighscore = 0f;
+    private float _timeHighscore = 0f;
     private float _distanceCovered = 0f;
-    private int _totalCoinsCollected = 0;
-    private bool hasHighscoreBeenBeaten = false;
+    private bool _beathighscore = false;
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        _startPos = _playerTrans.position;
+        instance = this;
+
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
@@ -37,68 +30,75 @@ public class DistanceCovered : MonoBehaviour
     {
         _startPos = _playerTrans.position;
 
-        // Load highscore and total coins collected from CSV file
-        CSVReader csvReader = FindObjectOfType<CSVReader>();
-        if (csvReader != null)
+        Scene currentScene = SceneManager.GetActiveScene();
+        if (currentScene.name == "rushrally1")
         {
-            (_highscore, _totalCoinsCollected) = csvReader.GetGameData("PlayerName");
-            UpdateHighscoreText();
-            UpdateCoinsText();
+            _classicHighscore = PlayerPrefs.GetFloat("ClassicHigh_" + currentScene.buildIndex, 0f);
+            UpdateHighscoreText(_classicHighscore);
         }
-        else
+        else if (currentScene.name == "TimeChallenge")
         {
-            Debug.LogError("CSVReader script not found in scene!");
+            _timeHighscore = PlayerPrefs.GetFloat("TimeHigh_" + currentScene.buildIndex, 0f);
+            UpdateHighscoreText(_timeHighscore);
         }
     }
 
     void Update()
     {
-        // Calculate distance covered by the player
         float distance = Mathf.Max(_playerTrans.position.x - _startPos.x, 0f);
-        _distanceCovered = distance;
-        _scoreText.text = "Score:" + _distanceCovered.ToString("F0") + "m";
 
-        // Update highscore if necessary
+        _distanceText.text = distance.ToString("F0") + "m";
 
+        
+        if (distance > GetCurrentHighscore())
+        {
+            Scene currentScene = SceneManager.GetActiveScene();
+            
+            if (currentScene.name == "rushrally1")
+            {
+                _classicHighscore = distance;
+                PlayerPrefs.SetFloat("ClassicHigh_" + currentScene.buildIndex, _classicHighscore);
+                UpdateHighscoreText(_classicHighscore);
+            }
+            else if (currentScene.name == "TimeChallenge")
+            {
+                _timeHighscore = distance;
+                PlayerPrefs.SetFloat("TimeHigh_" + currentScene.buildIndex, _timeHighscore);
+                UpdateHighscoreText(_timeHighscore);
+            }
 
-        if (_distanceCovered > _highscore && !hasHighscoreBeenBeaten)
+            _beathighscore = true;
+        }
+        else
+        {
+            _beathighscore = false;
+        }
+
+        
+        if (_beathighscore)
         {
             audioManager.PlaySFX(audioManager.highscore);
-            _highscore = _distanceCovered;
-            UpdateHighscoreText();
-            hasHighscoreBeenBeaten = true; // Set the flag to true after the highscore is beaten
+            _beathighscore = false; 
         }
     }
 
-    private void OnApplicationQuit()
+    void UpdateHighscoreText(float highscore)
     {
-        // Save highscore and total coins collected to CSV file when the game quits
-        CSVReader csvReader = FindObjectOfType<CSVReader>();
-        if (csvReader != null)
+        _highscoreText.text = highscore.ToString("F0") + "m";
+    }
+
+    float GetCurrentHighscore()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        if (currentScene.name == "rushrally1")
         {
-            csvReader.UpdateGameData("PlayerName", _highscore, _totalCoinsCollected);
+            return _classicHighscore;
         }
-    }
+        else if (currentScene.name == "TimeChallenge")
+        {
+            return _timeHighscore;
+        }
 
-    void UpdateHighscoreText()
-    {
-        _highscoreText.text = "Best: " + _highscore.ToString("F0") + "m";
-    }
-
-    void UpdateCoinsText()
-    {
-        _coinsText.text = "+ " + _totalCoinsCollected.ToString() + "Coins";
-    }
-
-    public void AddCoins(int coins)
-    {
-        _totalCoinsCollected += coins;
-        UpdateCoinsText();
-    }
-
-    // Method to retrieve the total coins collected
-    public int GetTotalCoinsCollected()
-    {
-        return _totalCoinsCollected;
+        return 0f;
     }
 }

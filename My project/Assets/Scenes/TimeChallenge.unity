@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 918, y: 432}
+  m_AnchoredPosition: {x: 472, y: 181}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2018814
@@ -5095,7 +5095,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 918, y: 498}
+  m_AnchoredPosition: {x: 472, y: 247}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5000006, y: 0.49999988}
 --- !u!114 &669971516
@@ -6444,11 +6444,9 @@ GameObject:
   - component: {fileID: 897646786}
   - component: {fileID: 897646787}
   - component: {fileID: 897646788}
-  - component: {fileID: 897646789}
   - component: {fileID: 897646790}
   - component: {fileID: 897646793}
   - component: {fileID: 897646795}
-  - component: {fileID: 897646794}
   - component: {fileID: 897646796}
   - component: {fileID: 897646797}
   m_Layer: 0
@@ -6538,22 +6536,6 @@ MonoBehaviour:
   playButton: {fileID: 988640252}
   pauseSprite: {fileID: 21300000, guid: 7d8bf0b3be99041a089e9258567711aa, type: 3}
   resumeSprite: {fileID: 21300000, guid: 0bcfbdb8544254ee0b1ee10411e02e95, type: 3}
---- !u!114 &897646789
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 897646785}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d68d014797ba93746a5bb1ac4625ffbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _scoreText: {fileID: 231806879}
-  _coinsText: {fileID: 2028307216}
-  _highscoreText: {fileID: 769449541}
-  _playerTrans: {fileID: 1177760781}
 --- !u!114 &897646790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6583,26 +6565,6 @@ MonoBehaviour:
   backWheel: {fileID: 1177760783}
   speed: 1500
   maxMotorTorque: 1000
---- !u!114 &897646794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 897646785}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ae4e0ea69d96ac489d7d6e71d11ee4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coinPrefab: {fileID: 2037961708}
-  fuelPrefab: {fileID: 1871753401}
-  numberOfCoins: 10
-  numberOfFuel: 5
-  coinSpawnAreaMin: {x: -8.89, y: -10}
-  coinSpawnAreaMax: {x: 8.89, y: 10}
-  fuelSpawnAreaMin: {x: -8.89, y: -10}
-  fuelSpawnAreaMax: {x: 8.89, y: 10}
 --- !u!114 &897646795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6645,14 +6607,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 897646785}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9867ba1d7406ba4291ab7b587ba15ef, type: 3}
+  m_Script: {fileID: 11500000, guid: d68d014797ba93746a5bb1ac4625ffbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _distanceText: {fileID: 0}
-  _highscoreText: {fileID: 0}
-  _playerTrans: {fileID: 0}
+  _distanceText: {fileID: 1871753403}
+  _highscoreText: {fileID: 1407504732}
+  _playerTrans: {fileID: 1177760781}
 --- !u!1 &918429316
 GameObject:
   m_ObjectHideFlags: 0
@@ -6772,7 +6734,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 918, y: 361}
+  m_AnchoredPosition: {x: 472, y: 110}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &961629857
@@ -7005,7 +6967,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 918, y: 361}
+  m_AnchoredPosition: {x: 472, y: 110}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &988640252
@@ -7890,7 +7852,7 @@ GameObject:
   - component: {fileID: 1407504733}
   - component: {fileID: 1407504732}
   m_Layer: 5
-  m_Name: highscore
+  m_Name: highscore1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7912,7 +7874,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -544, y: 21}
+  m_AnchoredPosition: {x: -480, y: 21}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1407504732
@@ -8471,7 +8433,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 407, y: -318}
+  m_AnchoredPosition: {x: 419, y: -318}
   m_SizeDelta: {x: 190, y: 210}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1646765430
@@ -8884,7 +8846,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -544, y: 138}
+  m_AnchoredPosition: {x: -480, y: 138}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1871753403
@@ -9237,7 +9199,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -455, y: -323}
+  m_AnchoredPosition: {x: -416, y: -323}
   m_SizeDelta: {x: 190, y: 210}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1992950773
@@ -9553,7 +9515,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -544, y: 77}
+  m_AnchoredPosition: {x: -480, y: 77}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2037961710
@@ -9603,8 +9565,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
