@@ -65,13 +65,6 @@ public class gamemanager : MonoBehaviour
     public void RestartGame()
     {
         audioManager.PlaySFX(audioManager.button2);
-        StartCoroutine(LoadSceneAfterSound());
-    }
-
-    private IEnumerator LoadSceneAfterSound()
-    {
-        Time.timeScale = 1f; // Unpause the game
-        yield return new WaitForSeconds(audioManager.button2.length);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
