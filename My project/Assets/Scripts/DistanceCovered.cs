@@ -46,14 +46,12 @@ public class DistanceCovered : MonoBehaviour
     void Update()
     {
         float distance = Mathf.Max(_playerTrans.position.x - _startPos.x, 0f);
-
         _distanceText.text = distance.ToString("F0") + "m";
 
-        
         if (distance > GetCurrentHighscore())
         {
             Scene currentScene = SceneManager.GetActiveScene();
-            
+
             if (currentScene.name == "rushrally1")
             {
                 _classicHighscore = distance;
@@ -67,18 +65,11 @@ public class DistanceCovered : MonoBehaviour
                 UpdateHighscoreText(_timeHighscore);
             }
 
-            _beathighscore = true;
-        }
-        else
-        {
-            _beathighscore = false;
-        }
-
-        
-        if (_beathighscore)
-        {
-            audioManager.PlaySFX(audioManager.highscore);
-            _beathighscore = false; 
+            if (!_beathighscore)
+            {
+                audioManager.PlaySFX(audioManager.highscore);
+                _beathighscore = true;
+            }
         }
     }
 
