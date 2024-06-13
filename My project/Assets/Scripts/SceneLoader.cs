@@ -30,13 +30,13 @@ public class SceneLoader : MonoBehaviour
         {
             progress = Mathf.MoveTowards(progress, asyncOperation.progress, Time.deltaTime);
             progressSlider.value = progress;
-            audioManager.PlaySFX(audioManager.loading, 0.25f);
+            audioManager.PlaySFX(audioManager.loading);
             // Play the sound
 
             if (progress >= 0.9f)
             {
                 progressSlider.value = 1;
-                audioManager.PlaySFX(audioManager.loading, 0.25f);
+                audioManager.PlaySFX(audioManager.loading);
                 asyncOperation.allowSceneActivation = true;
             }
             yield return null;
