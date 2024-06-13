@@ -9080,7 +9080,7 @@ MonoBehaviour:
   time: {fileID: 8300000, guid: c5e2a73ad4706440f93bf05df0b465fe, type: 3}
   buttonClick: {fileID: 8300000, guid: 79180f511d89441b9aa23ccae1992fe0, type: 3}
   highscore: {fileID: 8300000, guid: 2667a0a008b044e218b63df62e2be749, type: 3}
-  fuellow: {fileID: 8300000, guid: 84e427d6b66ab4066b6a4dcd0ce819ee, type: 3}
+  fuellow: {fileID: 8300000, guid: 89e6bc608da7b47d4914f3d9c2484e48, type: 3}
   quit: {fileID: 8300000, guid: 724131bc8a7f34041bb9f1701f0cb58d, type: 3}
 --- !u!4 &1784417098
 Transform:
