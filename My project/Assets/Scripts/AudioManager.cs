@@ -18,6 +18,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip fuellow;
     public AudioClip quit;
     public AudioClip nextprev;
+    public AudioClip loading;
     private void Start()
     {
         musicSource.clip = background;
@@ -33,8 +34,13 @@ public class AudioManager : MonoBehaviour
         //musicSource.clip = clip;
         musicSource.Play();
     }
-    public void PlaySFX(AudioClip clip)
+    // public void PlaySFX(AudioClip clip)
+    // {
+    //     sfxSource.PlayOneShot(clip);
+    // }
+    public void PlaySFX(AudioClip clip, float volume = 1.0f)
     {
+        sfxSource.volume = volume;
         sfxSource.PlayOneShot(clip);
     }
 

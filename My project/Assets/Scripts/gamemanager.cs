@@ -70,6 +70,7 @@ public class gamemanager : MonoBehaviour
 
     private IEnumerator LoadSceneAfterSound()
     {
+        Time.timeScale = 1f; // Unpause the game
         yield return new WaitForSeconds(audioManager.button2.length);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
