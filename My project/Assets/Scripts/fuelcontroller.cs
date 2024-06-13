@@ -15,6 +15,7 @@ public class fuelcontroller : MonoBehaviour
     private float _currentFuelAmount;
     private DriveCar ok;
     AudioManager audioManager;
+    bool isGameOver = false;
 
     private void Awake()
     {
@@ -51,7 +52,9 @@ public class fuelcontroller : MonoBehaviour
         {
 
             audioManager.PlaySFX(audioManager.gameOver);
+            isGameOver = true;
             gamemanager.instance.GameOver();
+
         }
 
         UpdateUI();
@@ -63,7 +66,7 @@ public class fuelcontroller : MonoBehaviour
 
         if (_fuelImage.fillAmount != fillAmount)
         {
-            if (fillAmount < 0.1f)
+            if (fillAmount < 0.1f && !isGameOver)
             {
                 audioManager.PlaySFX(audioManager.fuellow);
             }

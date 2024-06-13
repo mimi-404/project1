@@ -12,8 +12,8 @@ public class QUIT : MonoBehaviour
         {
                 // If we are running in the editor
 #if UNITY_EDITOR
-       
-        UnityEditor.EditorApplication.isPlaying = false;
+        
+                UnityEditor.EditorApplication.isPlaying = false;
 #else
                 audioManager.PlaySFX(audioManager.quit);
                 // Quit the application

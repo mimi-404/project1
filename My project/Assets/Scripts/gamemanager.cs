@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections;
 
 public class gamemanager : MonoBehaviour
 {
@@ -43,13 +44,22 @@ public class gamemanager : MonoBehaviour
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
+
     public void GameOver()
     {
+        audioManager.StopMusic();
+        DisableCanvasUI(mainGameCanvas);
+        StartCoroutine(GameOverCoroutine());
+    }
+
+    private IEnumerator GameOverCoroutine()
+    {
+        yield return new WaitForSeconds(2f); // Wait for 2 seconds
+
         _gameOverCanvas.SetActive(true);
 
         if (imageCanvas != null)
         {
-            audioManager.PlaySFX(audioManager.gameOver);
             audioManager.StopMusic();
             imageCanvas.SetActive(true); // Enable the Image Canvas when the game is over
         }
@@ -58,14 +68,21 @@ public class gamemanager : MonoBehaviour
             Debug.LogError("Image Canvas not assigned in gamemanager script.");
         }
         DisableCanvasUI(mainGameCanvas);
-        Time.timeScale = 0f;
+        Time.timeScale = 0f; // Pause the game
     }
 
     public void RestartGame()
     {
-        audioManager.PlaySFX(audioManager.buttonClick);
+        audioManager.PlaySFX(audioManager.button2);
+        StartCoroutine(LoadSceneAfterSound());
+    }
+
+    private IEnumerator LoadSceneAfterSound()
+    {
+        yield return new WaitForSeconds(audioManager.button2.length);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
 
     private void DisableCanvasUI(Canvas canvas)
     {
@@ -82,6 +99,8 @@ public class gamemanager : MonoBehaviour
             {
                 selectable.interactable = false;
             }
+
+            canvas.gameObject.SetActive(false); // Hide the canvas
         }
         else
         {
