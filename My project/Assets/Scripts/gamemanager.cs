@@ -17,7 +17,6 @@ public class gamemanager : MonoBehaviour
     public Sprite pauseSprite;
     public Sprite resumeSprite;
     AudioManager audioManager;
-
     private void Start()
     {
         // Set the pause button sprite
@@ -45,21 +44,22 @@ public class gamemanager : MonoBehaviour
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
+
     public void GameOver()
     {
         audioManager.StopMusic();
+        DisableCanvasUI(mainGameCanvas);
         StartCoroutine(GameOverCoroutine());
     }
 
     private IEnumerator GameOverCoroutine()
     {
+        yield return new WaitForSeconds(2f); // Wait for 2 seconds
+
+        _gameOverCanvas.SetActive(true);
+
         DisableCanvasUI(mainGameCanvas);
         Time.timeScale = 0f; // Pause the game
-        yield return new WaitForSecondsRealtime(2f); // Wait for 2 seconds in real time
-        Time.timeScale = 0f; // Pause the game
-        _gameOverCanvas.SetActive(true);
-        Time.timeScale = 0f; // Pause the game
-
     }
 
     public void RestartGame()
@@ -73,6 +73,7 @@ public class gamemanager : MonoBehaviour
         yield return new WaitForSeconds(audioManager.button2.length);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
 
     private void DisableCanvasUI(Canvas canvas)
     {
