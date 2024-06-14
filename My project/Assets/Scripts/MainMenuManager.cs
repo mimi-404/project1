@@ -18,6 +18,6 @@ public class MainMenuManager : MonoBehaviour
     private void DisplayCoinCount()
     {
         int coinCount = PlayerPrefs.GetInt(CoinPlayerPrefsKey, 0);
-        coinCountText.text = "Coins: " + coinCount.ToString();
+        coinCountText.text = "Coins:" + coinCount.ToString();
     }
 }

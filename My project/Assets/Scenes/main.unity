@@ -769,8 +769,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -248.76, y: 193.34}
-  m_SizeDelta: {x: 151.98, y: 38.24}
+  m_AnchoredPosition: {x: -167.8, y: 192.16}
+  m_SizeDelta: {x: 313.91, y: 35.88}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &405230903
 MonoBehaviour:
@@ -805,9 +805,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'coins:
-
-'
+  m_text: " \n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ded3c4e495bdc6148a4f7782a8138aeb, type: 2}
   m_sharedMaterial: {fileID: 8917658008095642892, guid: ded3c4e495bdc6148a4f7782a8138aeb, type: 2}
@@ -870,7 +868,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 5.64884}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
