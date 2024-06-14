@@ -62,9 +62,31 @@ public class gamemanager : MonoBehaviour
         Time.timeScale = 0f; // Pause the game
     }
 
+    // public void RestartGame()
+    // {
+    //     Time.timeScale = 1f;
+    //     audioManager.PlaySFX(audioManager.button2);
+    //     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    // }
     public void RestartGame()
     {
-        audioManager.PlaySFX(audioManager.button2);
+        StartCoroutine(RestartGameCoroutine());
+    }
+
+    // Coroutine for restarting the game
+    IEnumerator RestartGameCoroutine()
+    {
+        Time.timeScale = 1f; // Ensure game is not paused
+
+        // Assuming PlaySFX returns immediately and does not wait for the sound to finish
+        // Play the restart sound and wait for it to finish
+        AudioClip clip = audioManager.button2; // Get the audio clip for the restart sound
+        audioManager.PlaySFX(clip); // Play the sound
+
+        // Wait for the clip to finish playing
+        yield return new WaitForSeconds(clip.length);
+
+        // Now reload the scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
