@@ -9,6 +9,7 @@ public class gamemanager : MonoBehaviour
 
     [SerializeField] private GameObject _gameOverCanvas;
     [SerializeField] private Canvas mainGameCanvas;
+    [SerializeField] private GameObject gameovertext;
 
     private bool isPaused = false;
 
@@ -29,7 +30,7 @@ public class gamemanager : MonoBehaviour
         if (playButton != null && resumeSprite != null)
         {
             playButton.image.sprite = resumeSprite;
-            playButton.gameObject.SetActive(false); // Initially, play button is hidden
+            playButton.gameObject.SetActive(false); 
         }
     }
 
@@ -54,12 +55,14 @@ public class gamemanager : MonoBehaviour
 
     private IEnumerator GameOverCoroutine()
     {
+
+        gameovertext.SetActive(true);
         yield return new WaitForSeconds(2f); // Wait for 2 seconds
 
         _gameOverCanvas.SetActive(true);
 
         DisableCanvasUI(mainGameCanvas);
-        Time.timeScale = 0f; // Pause the game
+        Time.timeScale = 0f; 
     }
 
     // public void RestartGame()
@@ -107,7 +110,7 @@ public class gamemanager : MonoBehaviour
                 selectable.interactable = false;
             }
 
-            canvas.gameObject.SetActive(false); // Hide the canvas
+            canvas.gameObject.SetActive(false); 
         }
         else
         {
@@ -124,7 +127,7 @@ public class gamemanager : MonoBehaviour
             audioManager.PlaySFX(audioManager.buttonClick);
             audioManager.StopMusic();
             Debug.Log("Pausing game: hiding pause button and showing play button");
-            // Hide the pause button and show the play button
+       
             pauseButton.gameObject.SetActive(false);
             playButton.gameObject.SetActive(true);
         }
@@ -139,7 +142,7 @@ public class gamemanager : MonoBehaviour
             audioManager.PlaySFX(audioManager.buttonClick);
             audioManager.PlayMusic();
             Debug.Log("Resuming game: hiding play button and showing pause button");
-            // Hide the play button and show the pause button
+            
             pauseButton.gameObject.SetActive(true);
             playButton.gameObject.SetActive(false);
         }
