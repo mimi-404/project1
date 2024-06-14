@@ -35,30 +35,7 @@ public class fuelcontroller : MonoBehaviour
         UpdateUI();
     }
 
-    private void Update()
-    {
-        float vehicleSpeed = ok.GetSpeed();
 
-        if (carRigidbody2D.velocity != Vector2.zero) // The car is moving
-        {
-            _currentFuelAmount -= Time.deltaTime * _fuelDrainSpeed * vehicleSpeed;
-        }
-        else
-        {
-            _currentFuelAmount -= Time.deltaTime * _fuelDrainSpeed;
-        }
-
-        if (_currentFuelAmount <= 0f)
-        {
-
-            audioManager.PlaySFX(audioManager.gameOver);
-            isGameOver = true;
-            gamemanager.instance.GameOver();
-
-        }
-
-        UpdateUI();
-    }
 
     private void UpdateUI()
     {
@@ -74,7 +51,39 @@ public class fuelcontroller : MonoBehaviour
             _fuelImage.color = _fuelGradient.Evaluate(fillAmount);
         }
     }
+    private bool fuelLowAudioPlayed = false;
 
+    private void Update()
+    {
+        float vehicleSpeed = ok.GetSpeed();
+
+        if (carRigidbody2D.velocity != Vector2.zero) // The car is moving
+        {
+            _currentFuelAmount -= Time.deltaTime * _fuelDrainSpeed * vehicleSpeed;
+        }
+        else
+        {
+            _currentFuelAmount -= Time.deltaTime * _fuelDrainSpeed;
+        }
+
+        if (_currentFuelAmount <= 0f)
+        {
+            audioManager.PlaySFX(audioManager.gameOver);
+            isGameOver = true;
+            gamemanager.instance.GameOver();
+        }
+        else if (_currentFuelAmount <= _maxfuelAmount * 0.2f && !fuelLowAudioPlayed) // Assuming 20% is considered low fuel
+        {
+            audioManager.PlaySFX(audioManager.fuellow); // Assuming you have a fuelLow AudioClip set up in your AudioManager
+            fuelLowAudioPlayed = true;
+        }
+        else if (_currentFuelAmount > _maxfuelAmount * 0.2f && fuelLowAudioPlayed) // Reset the flag if fuel goes back above the low threshold
+        {
+            fuelLowAudioPlayed = false;
+        }
+
+        UpdateUI();
+    }
     public void FillFuel()
     {
         if (_currentFuelAmount < _maxfuelAmount)
