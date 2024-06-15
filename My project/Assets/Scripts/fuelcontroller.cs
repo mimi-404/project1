@@ -12,6 +12,7 @@ public class fuelcontroller : MonoBehaviour
     [SerializeField] private float _maxfuelAmount = 100f;
     [SerializeField] private Gradient _fuelGradient;
     [SerializeField] private Rigidbody2D carRigidbody2D;
+    [SerializeField] private GameObject fuelless;
     private float _currentFuelAmount;
     private DriveCar ok;
     AudioManager audioManager;
@@ -43,21 +44,18 @@ public class fuelcontroller : MonoBehaviour
 
         if (_fuelImage.fillAmount != fillAmount)
         {
-            if (fillAmount < 0.1f && !isGameOver)
-            {
-                audioManager.PlaySFX(audioManager.fuellow);
-            }
+
             _fuelImage.fillAmount = fillAmount;
             _fuelImage.color = _fuelGradient.Evaluate(fillAmount);
         }
     }
-    private bool fuelLowAudioPlayed = false;
 
-    private void Update()
+    private bool _isGameOverPlayed = false; // Add this flag
+
+    void Update()
     {
         float vehicleSpeed = ok.GetSpeed();
-
-        if (carRigidbody2D.velocity != Vector2.zero) // The car is moving
+        if (vehicleSpeed > 1f)
         {
             _currentFuelAmount -= Time.deltaTime * _fuelDrainSpeed * vehicleSpeed;
         }
@@ -66,20 +64,17 @@ public class fuelcontroller : MonoBehaviour
             _currentFuelAmount -= Time.deltaTime * _fuelDrainSpeed;
         }
 
-        if (_currentFuelAmount <= 0f)
+        if (_currentFuelAmount <= 0f && !_isGameOverPlayed) // Check if the flag is false
         {
             audioManager.PlaySFX(audioManager.gameOver);
+            _isGameOverPlayed = true; // Set the flag to true to prevent future playback
             isGameOver = true;
+            fuelless.SetActive(false);
             gamemanager.instance.GameOver();
         }
-        else if (_currentFuelAmount <= _maxfuelAmount * 0.2f && !fuelLowAudioPlayed) // Assuming 20% is considered low fuel
+        else if (_currentFuelAmount <= _maxfuelAmount * 0.2f) // Assuming 20% is considered low fuel
         {
-            audioManager.PlaySFX(audioManager.fuellow); // Assuming you have a fuelLow AudioClip set up in your AudioManager
-            fuelLowAudioPlayed = true;
-        }
-        else if (_currentFuelAmount > _maxfuelAmount * 0.2f && fuelLowAudioPlayed) // Reset the flag if fuel goes back above the low threshold
-        {
-            fuelLowAudioPlayed = false;
+            fuelless.SetActive(true);
         }
 
         UpdateUI();

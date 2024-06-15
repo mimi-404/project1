@@ -51,6 +51,7 @@ public class TimeChallenge : MonoBehaviour
             UpdateTimerDisplay();
         }
     }
+    bool isTimeAudioPlaying = false;
 
     void UpdateTimerDisplay()
     {
@@ -59,24 +60,27 @@ public class TimeChallenge : MonoBehaviour
         string timeText = string.Format("{0:0}:{1:00}", minutes, seconds);
         timerText.text = "Time left: " + timeText;
 
-        // Log the current time and color for debugging
-        //Debug.Log($"Current Time: {currentTime}, Timer Color: {timerText.color}");
-
-        if (currentTime <= 10f)
+        if (currentTime <= 10f && !isTimeAudioPlaying)
         {
             audioManager.PlaySFX(audioManager.time);
+            isTimeAudioPlaying = true; // Mark the "time" audio as playing
             timerText.color = warningColor;
         }
-        else
+        else if (currentTime > 10f)
         {
+            // Reset the flag if the current time is adjusted to be more than 10 seconds again
+            isTimeAudioPlaying = false;
             timerText.color = normalColor;
         }
     }
 
     void OnTimeUp()
     {
+        // No need to stop the "time" audio explicitly
         audioManager.StopMusic();
         audioManager.PlaySFX(audioManager.gameOver);
         gamemanager.instance.GameOver();
+        isTimeAudioPlaying = false; // Reset the flag when the game is over
     }
+
 }

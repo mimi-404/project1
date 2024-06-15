@@ -15,10 +15,10 @@ public class AudioManager : MonoBehaviour
     public AudioClip buttonClick;
     public AudioClip button2;
     public AudioClip highscore;
-    public AudioClip fuellow;
     public AudioClip quit;
     public AudioClip nextprev;
     public AudioClip loading;
+
     private void Start()
     {
         musicSource.clip = background;

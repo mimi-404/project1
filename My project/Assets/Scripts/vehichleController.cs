@@ -24,10 +24,6 @@ public class vehicleController : MonoBehaviour
         GameObject accelerateButton = GameObject.Find("GAS");
         GameObject brakeButton = GameObject.Find("BRAKE");
 
-        /*AddEventTrigger(accelerateButton, EventTriggerType.PointerDown, () => Accelerate(true));
-        AddEventTrigger(accelerateButton, EventTriggerType.PointerUp, () => Accelerate(false));
-        AddEventTrigger(brakeButton, EventTriggerType.PointerDown, () => Brake(true));
-        AddEventTrigger(brakeButton, EventTriggerType.PointerUp, () => Brake(false));*/
     }
 
     void Update()

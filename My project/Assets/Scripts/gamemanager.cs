@@ -30,7 +30,7 @@ public class gamemanager : MonoBehaviour
         if (playButton != null && resumeSprite != null)
         {
             playButton.image.sprite = resumeSprite;
-            playButton.gameObject.SetActive(false); 
+            playButton.gameObject.SetActive(false);
         }
     }
 
@@ -48,6 +48,7 @@ public class gamemanager : MonoBehaviour
 
     public void GameOver()
     {
+        audioManager.PlaySFX(audioManager.gameOver);
         audioManager.StopMusic();
         DisableCanvasUI(mainGameCanvas);
         StartCoroutine(GameOverCoroutine());
@@ -62,34 +63,25 @@ public class gamemanager : MonoBehaviour
         _gameOverCanvas.SetActive(true);
 
         DisableCanvasUI(mainGameCanvas);
-        Time.timeScale = 0f; 
+        Time.timeScale = 0f;
     }
 
-    // public void RestartGame()
-    // {
-    //     Time.timeScale = 1f;
-    //     audioManager.PlaySFX(audioManager.button2);
-    //     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    // }
     public void RestartGame()
     {
         StartCoroutine(RestartGameCoroutine());
     }
 
-    // Coroutine for restarting the game
+
     IEnumerator RestartGameCoroutine()
     {
         Time.timeScale = 1f; // Ensure game is not paused
 
-        // Assuming PlaySFX returns immediately and does not wait for the sound to finish
-        // Play the restart sound and wait for it to finish
-        AudioClip clip = audioManager.button2; // Get the audio clip for the restart sound
-        audioManager.PlaySFX(clip); // Play the sound
+        audioManager.PlaySFX(audioManager.button2);
 
-        // Wait for the clip to finish playing
-        yield return new WaitForSeconds(clip.length);
+        // Wait for a short duration to allow the audio to play
+        yield return new WaitForSeconds(0.25f); // Adjust the delay to match your audio clip length
 
-        // Now reload the scene
+        // Immediately reload the scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -110,7 +102,7 @@ public class gamemanager : MonoBehaviour
                 selectable.interactable = false;
             }
 
-            canvas.gameObject.SetActive(false); 
+            canvas.gameObject.SetActive(false);
         }
         else
         {
@@ -127,7 +119,7 @@ public class gamemanager : MonoBehaviour
             audioManager.PlaySFX(audioManager.buttonClick);
             audioManager.StopMusic();
             Debug.Log("Pausing game: hiding pause button and showing play button");
-       
+
             pauseButton.gameObject.SetActive(false);
             playButton.gameObject.SetActive(true);
         }
@@ -142,7 +134,7 @@ public class gamemanager : MonoBehaviour
             audioManager.PlaySFX(audioManager.buttonClick);
             audioManager.PlayMusic();
             Debug.Log("Resuming game: hiding play button and showing pause button");
-            
+
             pauseButton.gameObject.SetActive(true);
             playButton.gameObject.SetActive(false);
         }

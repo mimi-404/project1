@@ -59,6 +59,6 @@ public class Control : MonoBehaviour
 
         isGameOver = true;
 
-        // Optionally, you can add any additional game over logic here
     }
 }
+

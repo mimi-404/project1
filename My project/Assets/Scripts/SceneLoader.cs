@@ -7,11 +7,6 @@ public class SceneLoader : MonoBehaviour
 {
     public GameObject LoaderUI;
     public Slider progressSlider;
-    AudioManager audioManager;
-    void Awake()
-    {
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-    }
     public void LoadScene(int index)
     {
         StartCoroutine(LoadScene_Coroutine(index));
@@ -30,13 +25,10 @@ public class SceneLoader : MonoBehaviour
         {
             progress = Mathf.MoveTowards(progress, asyncOperation.progress, Time.deltaTime);
             progressSlider.value = progress;
-            audioManager.PlaySFX(audioManager.loading);
-            // Play the sound
 
             if (progress >= 0.9f)
             {
                 progressSlider.value = 1;
-                audioManager.PlaySFX(audioManager.loading);
                 asyncOperation.allowSceneActivation = true;
             }
             yield return null;

@@ -1,28 +1,4 @@
-// using UnityEngine;
 
-// public class ParallaxEffect : MonoBehaviour
-// {
-//     private float length, startPos;
-//     public GameObject cam;
-//     public float parallaxEffect;
-
-//     void Start()
-//     {
-//         startPos = transform.position.x;
-//         length = GetComponent<SpriteRenderer>().bounds.size.x;
-//     }
-
-//     void Update()
-//     {
-//         float temp = (cam.transform.position.x * (1 - parallaxEffect));
-//         float dist = (cam.transform.position.x * parallaxEffect);
-
-//         transform.position = new Vector3(startPos + dist, transform.position.y, transform.position.z);
-
-//         if (temp > startPos + length) startPos += length;
-//         else if (temp < startPos - length) startPos -= length;
-//     }
-// }
 using UnityEngine;
 
 public class Parallax : MonoBehaviour
@@ -60,44 +36,3 @@ public class Parallax : MonoBehaviour
         }
     }
 }
-// using UnityEngine;
-
-// public class ParallaxEffect : MonoBehaviour
-// {
-//     private float startPos;
-//     private float length;
-//     public GameObject cam;
-//     public float baseParallaxEffect = 0.5f;
-//     private DriveCar driveCar;
-
-//     void Start()
-//     {
-//         startPos = transform.position.x;
-//         length = GetComponent<SpriteRenderer>().bounds.size.x;
-//         driveCar = cam.GetComponent<Control>().target.GetComponent<DriveCar>();
-//     }
-
-//     void LateUpdate()
-//     {
-//         if (driveCar == null) return;
-
-//         float carSpeed = driveCar.GetSpeed();
-//         float dynamicParallaxEffect = Mathf.Lerp(baseParallaxEffect, baseParallaxEffect + carSpeed * 0.01f, Time.deltaTime);
-
-//         float camPosX = cam.transform.position.x;
-//         float dist = camPosX * dynamicParallaxEffect;
-
-//         transform.position = new Vector3(startPos + dist, transform.position.y, transform.position.z);
-
-//         float temp = camPosX * (1 - dynamicParallaxEffect);
-
-//         if (temp > startPos + length)
-//         {
-//             startPos += length;
-//         }
-//         else if (temp < startPos - length)
-//         {
-//             startPos -= length;
-//         }
-//     }
-// }

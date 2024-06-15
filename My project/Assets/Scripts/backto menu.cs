@@ -41,11 +41,4 @@ public class backtomenu : MonoBehaviour
         SceneManager.LoadScene("main");
     }
 }
-//         StartCoroutine(LoadSceneAfterSound());
-//     }
 
-//     private IEnumerator LoadSceneAfterSound()
-//     {
-//         yield return new WaitForSeconds(audioManager.button2.length);
-
-// }

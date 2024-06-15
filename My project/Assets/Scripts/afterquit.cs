@@ -5,16 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class afterquit : MonoBehaviour
 {
-    // public void PlayGame1()
-    // {
-    //     SceneManager.LoadScene("rushrally1"); // Replace with your scene name
-    // }
-
-    // public void PlayGame2()
-    // {
-    //     SceneManager.LoadScene("Timechallenge"); // Replace with your scene name
-    // }
-
     public void QuitGame()
     {
         Application.Quit();
