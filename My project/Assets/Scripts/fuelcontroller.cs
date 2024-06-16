@@ -76,6 +76,10 @@ public class fuelcontroller : MonoBehaviour
         {
             fuelless.SetActive(true);
         }
+        else
+        {
+            fuelless.SetActive(false);
+        }
 
         UpdateUI();
     }
