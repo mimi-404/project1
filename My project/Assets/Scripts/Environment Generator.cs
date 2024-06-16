@@ -18,7 +18,7 @@ public class EnvironmentGenerator : MonoBehaviour
     [SerializeField] private GameObject[] _coinPrefabs; // Array of different coin prefabs
     [SerializeField] private float _coinHeightAboveTerrain = -6f; // Small positive height above the terrain for coins
     [SerializeField] private float _fuelHeightAboveTerrain = -6f;
-    [SerializeField] private float _coinDistance = 5f; // Distance between each coin spawn
+    [SerializeField] private float _coinDistance = 10f; // Distance between each coin spawn
     [SerializeField] private float _fuelDistance = 20f; // Decreased fuel spawn distance
     [SerializeField] private float _coinSpacing = 2f; // Horizontal spacing between coins in a group
 
