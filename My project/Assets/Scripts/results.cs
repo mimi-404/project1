@@ -28,6 +28,7 @@ public class Results : MonoBehaviour
             highscoreKey = "TimeHigh_" + currentScene.buildIndex;
         }
 
+        coincollector.instance.SaveCoinCount();
         highscore = PlayerPrefs.GetFloat(highscoreKey, 0f);
         int coins = PlayerPrefs.GetInt("CoinCount", 0);
 

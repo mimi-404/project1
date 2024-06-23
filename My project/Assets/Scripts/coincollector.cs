@@ -1,6 +1,8 @@
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using System.Security.Cryptography;
+using System.Text;
+using System;
 
 public class coincollector : MonoBehaviour
 {
@@ -9,6 +11,8 @@ public class coincollector : MonoBehaviour
     private int coinCount = 0;
 
     private const string CoinPlayerPrefsKey = "CoinCount";
+    private const string CoinHashKey = "CoinHash";
+    private const string Salt = "your-salt";
 
     private void Awake()
     {
@@ -59,20 +63,42 @@ public class coincollector : MonoBehaviour
 
     private void UpdateCoinText()
     {
-        coinText.text = coinCount.ToString(); 
+        coinText.text = coinCount.ToString();
     }
 
-    private void SaveCoinCount()
+    public void SaveCoinCount()
     {
         PlayerPrefs.SetInt(CoinPlayerPrefsKey, coinCount);
-        PlayerPrefs.Save(); 
+        PlayerPrefs.SetString(CoinHashKey, GetHash(coinCount.ToString()));
+        PlayerPrefs.Save();
     }
 
     private void LoadCoinCount()
     {
-        if (PlayerPrefs.HasKey(CoinPlayerPrefsKey))
+        if (PlayerPrefs.HasKey(CoinPlayerPrefsKey) && PlayerPrefs.HasKey(CoinHashKey))
         {
-            coinCount = PlayerPrefs.GetInt(CoinPlayerPrefsKey);
+            int savedCoinCount = PlayerPrefs.GetInt(CoinPlayerPrefsKey);
+            string savedHash = PlayerPrefs.GetString(CoinHashKey);
+            if (savedHash == GetHash(savedCoinCount.ToString()))
+            {
+                coinCount = savedCoinCount;
+            }
+            else
+            {
+                Debug.LogWarning("Coin count hash mismatch! Data might be tampered.");
+                coinCount = 0;
+            }
         }
     }
+
+    private string GetHash(string input)
+    {
+        using (SHA256 sha256 = SHA256.Create())
+        {
+            byte[] bytes = Encoding.UTF8.GetBytes(input + Salt);
+            byte[] hash = sha256.ComputeHash(bytes);
+            return Convert.ToBase64String(hash);
+        }
+    }
+
 }

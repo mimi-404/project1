@@ -9,6 +9,7 @@ public class gamemanager : MonoBehaviour
 
     [SerializeField] private GameObject _gameOverCanvas;
     [SerializeField] private Canvas mainGameCanvas;
+    [SerializeField] private Canvas mainGameCanvas2;
     [SerializeField] private GameObject gameovertext;
 
     private bool isPaused = false;
@@ -20,13 +21,12 @@ public class gamemanager : MonoBehaviour
     AudioManager audioManager;
     private void Start()
     {
-        // Set the pause button sprite
         if (pauseButton != null && pauseSprite != null)
         {
             pauseButton.image.sprite = pauseSprite;
             pauseButton.gameObject.SetActive(true);
         }
-        // Set the play button sprite and hide it initially
+ 
         if (playButton != null && resumeSprite != null)
         {
             playButton.image.sprite = resumeSprite;
@@ -51,6 +51,7 @@ public class gamemanager : MonoBehaviour
         audioManager.PlaySFX(audioManager.gameOver);
         audioManager.StopMusic();
         DisableCanvasUI(mainGameCanvas);
+        DisableCanvasUI(mainGameCanvas2);
         StartCoroutine(GameOverCoroutine());
     }
 
@@ -58,7 +59,7 @@ public class gamemanager : MonoBehaviour
     {
 
         gameovertext.SetActive(true);
-        yield return new WaitForSeconds(2f); // Wait for 2 seconds
+        yield return new WaitForSeconds(2f); 
 
         _gameOverCanvas.SetActive(true);
 
@@ -74,7 +75,7 @@ public class gamemanager : MonoBehaviour
 
     IEnumerator RestartGameCoroutine()
     {
-        Time.timeScale = 1f; // Ensure game is not paused
+        Time.timeScale = 1f; 
 
         audioManager.PlaySFX(audioManager.button2);
 

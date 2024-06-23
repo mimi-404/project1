@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -537,6 +536,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameOverCanvas: {fileID: 148303421}
   mainGameCanvas: {fileID: 0}
+  mainGameCanvas2: {fileID: 0}
   gameovertext: {fileID: 0}
   pauseButton: {fileID: 0}
   playButton: {fileID: 0}
@@ -7007,6 +7007,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameOverCanvas: {fileID: 148303421}
   mainGameCanvas: {fileID: 518083347}
+  mainGameCanvas2: {fileID: 2068539596}
   gameovertext: {fileID: 1852837409}
   pauseButton: {fileID: 961629857}
   playButton: {fileID: 988640252}
@@ -8404,6 +8405,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameOverCanvas: {fileID: 0}
   mainGameCanvas: {fileID: 518083347}
+  mainGameCanvas2: {fileID: 0}
   gameovertext: {fileID: 0}
   pauseButton: {fileID: 0}
   playButton: {fileID: 0}
